@@ -58,6 +58,7 @@ void Application::gameLoop()
 		{
 			//TODO: do something
 			//window.close();
+			isRunning = false;
 		}
 
 		//drawing and rendering
@@ -71,24 +72,35 @@ void Application::gameLoop()
 
 void Application::render()
 {
+
+	// clear the buffers
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	glClearColor(1, 1, 1, 0);
 
-	glMatrixMode(GL_PROJECTION);
+	glMatrixMode(GL_MODELVIEW);
 
 	// Matrix Load Identity
 	glLoadIdentity();
 
-	// clear the buffers
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	gluLookAt(5, 5, 1, 5, 5, 0, 0, 1, 0);
 
 	// draw...		 
 	//red
 	glColor3f(1, 0, 0);
 
-	glBegin(GL_QUADS);
+	glBegin(GL_TRIANGLES);
 	glVertex3f(0, 0, 0);
-	glVertex3f(10, 0, 10);
-	glVertex3f(10, 20, 10);
-	glVertex3f(0, 10, 0);
+	glVertex3f(10, 0, 0);
+	glVertex3f(8, 8, 0);
 	glEnd();
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	
+	//gluPerspective(75, window.getSize().x / (float)window.getSize().y, 1, 10);
+
+	gluOrtho2D(-24, 24, -18, 18);
+
+	glFlush();
 }
