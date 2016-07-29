@@ -26,8 +26,6 @@ namespace SSDC
 
 	void Application::init()
 	{
-		//TODO: do something?	set up gl
-
 		window.create(sf::VideoMode(800, 600), "Stair Dismount Clone");
 
 		// white clear colour
@@ -64,9 +62,6 @@ namespace SSDC
 		#glEnable(GL_LIGHT0)
 		#glEnable(GL_COLOR_MATERIAL)
 		*/
-
-
-
 	}
 
 	void Application::draw()
@@ -76,10 +71,9 @@ namespace SSDC
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glMatrixMode(GL_MODELVIEW);
-
-		// matrix Load Identity
 		glLoadIdentity();
 
+		// look at before drawing
 		gluLookAt(5, 6, 30, 5, 5, 0, 0, 1, 0);
 
 		// draw...		 
