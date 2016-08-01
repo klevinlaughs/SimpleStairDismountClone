@@ -7,9 +7,10 @@ private:
 	State *currentState;
 	std::array<State, 2> states;
 public:
+	enum state { READY, DISMOUNT };
 	StateManager();
 	~StateManager();
 	State *getCurrentState();
-	void goTo(State::state nextState);
+	void goTo(state nextState);
 };
 

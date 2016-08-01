@@ -16,13 +16,13 @@ State *StateManager::getCurrentState()
 	return nullptr;
 }
 
-void StateManager::goTo(State::state nextState)
+void StateManager::goTo(state nextState)
 {
 	switch (nextState)
 	{
-		case State::READY:
+		case READY:
 			return;
-		case State::DISMOUNT:
+		case DISMOUNT:
 			return;
 	}
 }

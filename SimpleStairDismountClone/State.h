@@ -2,7 +2,6 @@
 class State
 {
 public:
-	enum state {READY, DISMOUNT};
 	State();
 	~State();
 	virtual void init() = 0;
