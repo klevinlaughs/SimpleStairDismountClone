@@ -11,6 +11,7 @@
 int main(void) 
 {
 
+	// Start application
 	SSDC::Application app;
 	app.init();
 	app.run();

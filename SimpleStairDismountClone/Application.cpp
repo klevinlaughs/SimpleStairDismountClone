@@ -19,6 +19,7 @@ namespace SSDC
 	{
 	}
 
+	// exit status denoting type of exit, e.g. success or failure
 	int Application::getExitStatus()
 	{
 		return exitStatus;
@@ -64,6 +65,7 @@ namespace SSDC
 		*/
 	}
 
+	// method to render/draw the objects for a given state/scene
 	void Application::draw()
 	{
 
@@ -92,13 +94,14 @@ namespace SSDC
 		glFlush();
 	}
 
-
+	// method to run the application using game loop
 	int Application::run()
 	{
 		gameLoop();
 		return exitStatus;
 	}
 
+	// game looping function, exits when game is closed somehow
 	void Application::gameLoop()
 	{
 		bool isRunning = true;
@@ -136,6 +139,8 @@ namespace SSDC
 
 		window.close();
 	}
+
+	// TODO: dereference things after game ends
 
 
 }
