@@ -10,5 +10,6 @@ public:
 	StateManager();
 	~StateManager();
 	State *getCurrentState();
+	void goTo(State::state nextState);
 };
 
