@@ -1,5 +1,5 @@
 #pragma once
-struct Center {
+struct Origin {
 	int x = 0;
 	int y = 0;
 	int z = 0;
@@ -8,7 +8,7 @@ struct Center {
 class GrObject
 {
 protected:
-	Center center;
+	Origin center;
 public:
 	GrObject();
 	~GrObject();
