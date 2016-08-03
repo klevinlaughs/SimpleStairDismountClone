@@ -1,17 +1,18 @@
 #pragma once
-struct Origin {
-	int x = 0;
-	int y = 0;
-	int z = 0;
+struct Vector {
+	double x = 0;
+	double y = 0;
+	double z = 0;
 };
 
 class GrObject
 {
 protected:
-	Origin center;
+	Vector origin;
+	Vector axis;
 public:
 	GrObject();
 	~GrObject();
-	virtual void draw() = 0;
+	virtual void draw();
 };
 
