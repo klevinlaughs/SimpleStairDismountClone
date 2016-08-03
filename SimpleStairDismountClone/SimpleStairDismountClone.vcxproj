@@ -147,6 +147,10 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="GrObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateDismount.cpp" />
+    <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="StateReady.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -154,6 +158,10 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="GrObject.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateDismount.h" />
+    <ClInclude Include="StateManager.h" />
+    <ClInclude Include="StateReady.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
