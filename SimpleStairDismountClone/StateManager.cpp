@@ -6,7 +6,7 @@
 StateManager::StateManager()
 {
 	_states[0] = new StateReady();
-	//_states[1] = new StateDismount();
+	_states[1] = new StateDismount();
 	currentState = _states[0];
 }
 
@@ -26,15 +26,6 @@ State *StateManager::getCurrentState()
 
 void StateManager::goTo(state nextState)
 {
-	switch (nextState)
-	{
-		case READY:
-			currentState = _states[0];
-			break;
-		case DISMOUNT:
-			currentState = _states[1];
-			break;
-	}
-
+	currentState = _states[nextState];
 	currentState->init();
 }

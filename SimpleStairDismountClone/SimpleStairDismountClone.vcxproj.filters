@@ -36,9 +36,6 @@
     <ClCompile Include="BulletObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Ragdoll.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
