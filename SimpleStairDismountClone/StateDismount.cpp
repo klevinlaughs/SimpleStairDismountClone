@@ -49,3 +49,8 @@ void StateDismount::update()
 {
 
 }
+
+std::string StateDismount::getName()
+{
+	return name;
+}

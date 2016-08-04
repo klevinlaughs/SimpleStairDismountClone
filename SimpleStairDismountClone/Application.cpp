@@ -1,5 +1,7 @@
 #include "Application.h"
-#include <stdio.h>
+#include <stdio.h> 
+#include <string>
+#include <iostream>
 #include "SFML/Window.hpp"
 #include "SFML/OpenGL.hpp"
 #include <GL/GLU.h>
@@ -134,27 +136,34 @@ namespace SSDC
 					// adjust the viewport when the window is resized
 					glViewport(0, 0, event.size.width, event.size.height);
 				}
-			}
-
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-			{
-				if (stateManager.getCurrentState()->getName() == "READY")
+				else if (event.type == sf::Event::KeyPressed)
 				{
-					stateManager.goTo(stateManager.DISMOUNT);
+					if (event.key.code == sf::Keyboard::Escape || event.key.code == sf::Keyboard::Space)
+					{
+						//TODO: do something
+						//window.close();
+						isRunning = false;
+					}
 				}
-				else
+				else if (event.type == sf::Event::MouseButtonPressed)
 				{
+					if (event.mouseButton.button == sf::Mouse::Left)
+					{
+						std::string currentState = stateManager.getCurrentState()->getName();
+						if (stateManager.getCurrentState()->getName() == "READY")
+						{
+							std::cout << currentState << "Ready leave\n";
+							stateManager.goTo(stateManager.DISMOUNT);
+						}
+						else
+						{
 
+							std::cout << currentState << "DISMOUNT leave\n";
+							stateManager.goTo(stateManager.READY);
+						}
+						// TODO: RNG launch if state is ready
+					}
 				}
-				// TODO: RNG launch if state is ready
-			}
-
-			// Close the window
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-			{
-				//TODO: do something
-				//window.close();
-				isRunning = false;
 			}
 
 			//update and do drawing and rendering

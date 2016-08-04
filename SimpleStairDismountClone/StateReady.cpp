@@ -48,4 +48,10 @@ void StateReady::draw()
 
 void StateReady::update()
 {
+}		   
+
+std::string StateReady::getName()
+{
+	return name;
 }
+

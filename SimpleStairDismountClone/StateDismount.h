@@ -27,5 +27,6 @@ public:
 	void exit();
 	void draw();
 	void update();
+	std::string getName();
 };
 
