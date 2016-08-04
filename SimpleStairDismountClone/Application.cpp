@@ -76,24 +76,6 @@ namespace SSDC
 		//------------------------------------------------
 		stateManager.getCurrentState()->draw();
 
-		/*
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
-
-		// look at before drawing
-		gluLookAt(5, 6, 30, 5, 5, 0, 0, 1, 0);
-
-		// draw...		 
-		//red
-		glColor3f(1, 0, 0);
-
-		glBegin(GL_TRIANGLES);
-		glVertex3f(0, 0, 0);
-		glVertex3f(10, 0, 2);
-		glVertex3f(3, 10, 0);
-		glEnd();
-		*/
-
 		//glMatrixMode(GL_PROJECTION);
 		//glLoadIdentity();
 
@@ -148,19 +130,15 @@ namespace SSDC
 				{
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
-						std::string currentState = stateManager.getCurrentState()->getName();
 						if (stateManager.getCurrentState()->getName() == "READY")
 						{
-							std::cout << currentState << "Ready leave\n";
 							stateManager.goTo(stateManager.DISMOUNT);
 						}
 						else
 						{
-
-							std::cout << currentState << "DISMOUNT leave\n";
 							stateManager.goTo(stateManager.READY);
+							// TODO: RNG launch if state is ready
 						}
-						// TODO: RNG launch if state is ready
 					}
 				}
 			}
