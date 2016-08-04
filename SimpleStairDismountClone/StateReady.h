@@ -3,6 +3,8 @@
 class StateReady :
 	public State
 {
+private:
+	std::string name = "READY";
 public:
 	StateReady();
 	~StateReady();

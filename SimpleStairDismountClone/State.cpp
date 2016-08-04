@@ -9,3 +9,8 @@ State::~State()
 {
 
 }
+
+std::string State::getName()
+{
+	return name;
+}
