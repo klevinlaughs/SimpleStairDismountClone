@@ -138,6 +138,14 @@ namespace SSDC
 
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
+				if (stateManager.getCurrentState()->getName() == "READY")
+				{
+					stateManager.goTo(stateManager.DISMOUNT);
+				}
+				else
+				{
+
+				}
 				// TODO: RNG launch if state is ready
 			}
 
