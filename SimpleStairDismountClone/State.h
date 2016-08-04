@@ -2,11 +2,8 @@
 #include <string>
 class State
 {
-private:
-	std::string name;
-public:			
-	State();
-	virtual ~State() = 0;
+public:		
+	virtual ~State() {};
 	virtual void init() = 0;
 	virtual void enter() = 0;
 	virtual void exit() = 0;
@@ -14,6 +11,6 @@ public:
 	//virtual void pause() = 0;
 	virtual void draw() = 0;
 	virtual void update() = 0;
-	virtual std::string getName();
+	virtual std::string getName() = 0;
 };
 

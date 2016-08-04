@@ -6,7 +6,7 @@
 StateManager::StateManager()
 {
 	_states[0] = new StateReady();
-	_states[1] = new StateDismount();
+	//_states[1] = new StateDismount();
 	currentState = _states[0];
 }
 
