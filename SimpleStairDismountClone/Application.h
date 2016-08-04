@@ -10,6 +10,7 @@ namespace SSDC
 		void gameLoop();
 		int exitStatus;
 		void draw();
+		void update();
 	public:
 		Application();
 		~Application();

@@ -11,7 +11,7 @@ namespace SSDC
 {
 	Application::Application()
 	{
-		printf("%s\n", glGetString(GL_VERSION));
+		//printf("%s\n", glGetString(GL_VERSION));
 		exitStatus = 0;
 	}
 
@@ -94,6 +94,10 @@ namespace SSDC
 		glFlush();
 	}
 
+	void Application::update()
+	{
+	}
+
 	// method to run the application using game loop
 	int Application::run()
 	{
@@ -131,7 +135,8 @@ namespace SSDC
 				isRunning = false;
 			}
 
-			//drawing and rendering
+			//update and do drawing and rendering
+			update();
 			draw();
 
 			window.display();
