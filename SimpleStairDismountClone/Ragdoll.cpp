@@ -6,6 +6,11 @@ Ragdoll::Ragdoll()
 {
 }
 
+Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
+{
+	this->world = world;
+}
+
 
 Ragdoll::~Ragdoll()
 {
