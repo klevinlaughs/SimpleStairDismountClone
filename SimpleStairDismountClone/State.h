@@ -1,7 +1,8 @@
 #pragma once
 class State
 {
-public:
+public:			
+	State();
 	virtual ~State() = 0;
 	virtual void init() = 0;
 	virtual void enter() = 0;

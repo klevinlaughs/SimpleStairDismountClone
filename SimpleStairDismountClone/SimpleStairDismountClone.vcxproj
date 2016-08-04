@@ -148,6 +148,7 @@
     <ClCompile Include="BulletObject.cpp" />
     <ClCompile Include="GrObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="StateDismount.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="StateReady.cpp" />
