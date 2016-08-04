@@ -16,7 +16,7 @@ StateManager::~StateManager()
 	/*for (int i = 0; i < 2;i++) {
 		delete _states[i];
 	}*/
-	delete[] _states;
+	//delete[] _states;
 }
 
 State *StateManager::getCurrentState()
