@@ -10,5 +10,6 @@ public:
 	void enter();
 	void exit();
 	void draw();
+	void update();
 };
 

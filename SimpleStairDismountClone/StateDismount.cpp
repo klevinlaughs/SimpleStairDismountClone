@@ -27,3 +27,7 @@ void StateDismount::draw()
 {
 
 }
+
+void StateDismount::update()
+{
+}

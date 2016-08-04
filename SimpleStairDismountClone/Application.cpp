@@ -72,6 +72,10 @@ namespace SSDC
 		// clear the buffers
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		//------------------------------------------------
+		stateManager.getCurrentState()->draw();
+
+		/*
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 
@@ -87,15 +91,20 @@ namespace SSDC
 		glVertex3f(10, 0, 2);
 		glVertex3f(3, 10, 0);
 		glEnd();
+		*/
 
 		//glMatrixMode(GL_PROJECTION);
 		//glLoadIdentity();
 
+
+		//------------------------------------------------
 		glFlush();
 	}
 
 	void Application::update()
 	{
+		State *currentState = stateManager.getCurrentState();
+		currentState->update();
 	}
 
 	// method to run the application using game loop
