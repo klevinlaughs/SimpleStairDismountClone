@@ -88,6 +88,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Kelvin\Desktop\bullet3-2.83.7\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -166,6 +167,17 @@
     <ClInclude Include="StateDismount.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="StateReady.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Desktop\bullet3-2.83.7\build\src\BulletCollision\BulletCollision.vcxproj">
+      <Project>{045ecd31-5fb6-38f7-8756-859a2190cc33}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\Desktop\bullet3-2.83.7\build\src\BulletDynamics\BulletDynamics.vcxproj">
+      <Project>{b28a2675-b0f8-3bce-ac4d-fab31b765ec0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\Desktop\bullet3-2.83.7\build\src\LinearMath\LinearMath.vcxproj">
+      <Project>{640955f1-f54f-32cd-9949-0ce0f7a0ff89}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
