@@ -29,8 +29,12 @@ void StateManager::goTo(state nextState)
 	switch (nextState)
 	{
 		case READY:
-			return;
+			currentState = _states[0];
+			break;
 		case DISMOUNT:
-			return;
+			currentState = _states[1];
+			break;
 	}
+
+	currentState->init();
 }
