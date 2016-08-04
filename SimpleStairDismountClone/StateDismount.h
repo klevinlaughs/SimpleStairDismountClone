@@ -1,10 +1,22 @@
 #pragma once
 #include "State.h"
+#include "BulletCollision/BroadphaseCollision/btBroadphaseInterface.h"		   
+#include "BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
+#include "BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
+#include "BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
+#include "BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
+
 class StateDismount :
 	public State
 {
 private:
 	std::string name = "DISMOUNT";
+	btBroadphaseInterface *broadphase;
+	btDefaultCollisionConfiguration *collisionConfiguration;
+	btCollisionDispatcher *dispatcher;
+	btSequentialImpulseConstraintSolver *solver;
+	btDiscreteDynamicsWorld *world;
+
 public:
 	StateDismount();
 	~StateDismount();
