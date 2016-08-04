@@ -136,6 +136,11 @@ namespace SSDC
 				}
 			}
 
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				// TODO: RNG launch if state is ready
+			}
+
 			// Close the window
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 			{
