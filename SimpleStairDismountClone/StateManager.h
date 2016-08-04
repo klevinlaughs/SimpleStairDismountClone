@@ -5,7 +5,7 @@ class StateManager
 {
 private:
 	State *currentState;
-	//std::array<State, 2> states;
+	State *_states[2];
 public:
 	enum state { READY, DISMOUNT };
 	StateManager();
