@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Window.hpp"
+#include "StateManager.h"
 
 namespace SSDC
 {
@@ -7,6 +8,7 @@ namespace SSDC
 	{
 	private:
 		sf::Window window;
+		StateManager stateManager;
 		void gameLoop();
 		int exitStatus;
 		void draw();
