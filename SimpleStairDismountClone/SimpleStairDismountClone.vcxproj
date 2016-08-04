@@ -145,9 +145,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="BulletObject.cpp" />
     <ClCompile Include="GrObject.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="State.cpp" />
     <ClCompile Include="StateDismount.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="StateReady.cpp" />
@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="BulletObject.h" />
     <ClInclude Include="GrObject.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateDismount.h" />

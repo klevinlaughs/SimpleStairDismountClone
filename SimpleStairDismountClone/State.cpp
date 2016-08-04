@@ -2,7 +2,7 @@
 
 State::State() 
 {
-	init();
+
 }
 
 State::~State() 

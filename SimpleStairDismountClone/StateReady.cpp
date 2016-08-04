@@ -1,6 +1,6 @@
 #include "StateReady.h"
 
-StateReady::StateReady() : State()
+StateReady::StateReady()
 {
 }
 
