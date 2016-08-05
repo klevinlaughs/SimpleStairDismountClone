@@ -26,6 +26,7 @@ State *StateManager::getCurrentState()
 
 void StateManager::goTo(state nextState)
 {
+	currentState->exit();
 	currentState = _states[nextState];
 	currentState->init();
 }
