@@ -133,6 +133,7 @@ namespace SSDC
 				{
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
+						// switch to correct state
 						if (stateManager.getCurrentState()->getName() == "READY")
 						{
 							stateManager.goTo(stateManager.DISMOUNT);
@@ -140,7 +141,6 @@ namespace SSDC
 						else
 						{
 							stateManager.goTo(stateManager.READY);
-							// TODO: RNG launch if state is ready
 						}
 					}
 				}
