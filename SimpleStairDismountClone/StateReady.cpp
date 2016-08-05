@@ -3,8 +3,10 @@
 #include <GL/GL.h>
 #include <GL/GLU.h>
 
-StateReady::StateReady()
+StateReady::StateReady(btDiscreteDynamicsWorld *world, Ragdoll *ragdoll)
 {
+	this->world = world;
+	this->ragdoll = ragdoll;
 }
 
 

@@ -1,7 +1,9 @@
 #include "StateDismount.h"			
 
-StateDismount::StateDismount()
+StateDismount::StateDismount(btDiscreteDynamicsWorld *world, Ragdoll *ragdoll)
 {
+	this->world = world;
+	this->ragdoll = ragdoll;
 }
 
 StateDismount::~StateDismount()
