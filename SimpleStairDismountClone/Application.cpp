@@ -37,8 +37,13 @@ namespace SSDC
 
 		// white clear colour
 		glClearColor(1, 1, 1, 0);
-
 		glEnable(GL_DEPTH_TEST);
+
+		// enable lighting, GL_LIGHTi, where i from 0 to 7 or 8	 
+		//glEnable(GL_LIGHT0);
+		//glEnable(GL_LIGHT1);
+		//glEnable(GL_LIGHTING);
+		//glEnable(GL_COLOR_MATERIAL);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -63,14 +68,6 @@ namespace SSDC
 		//glOrtho and gluOrtho2D make flat, incorrect perspective views
 
 		//glViewport(0, 0, window.getSize().x, window.getSize().y);
-
-		/*
-		#glDepthFunc(GL_LESS)
-		#glEnable(GL_DEPTH_TEST)
-		#glEnable(GL_LIGHTING)
-		#glEnable(GL_LIGHT0)
-		#glEnable(GL_COLOR_MATERIAL)
-		*/
 	}
 
 	// method to render/draw the objects for a given state/scene
@@ -93,8 +90,7 @@ namespace SSDC
 
 	void Application::update()
 	{
-		State *currentState = stateManager.getCurrentState();
-		currentState->update();
+		stateManager.getCurrentState()->update();
 	}
 
 	// method to run the application using game loop
