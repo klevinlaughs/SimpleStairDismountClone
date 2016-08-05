@@ -54,6 +54,8 @@ void StateReady::draw()
 	glVertex3f(-100, 0, -100);
 	glVertex3f(-100, 0, 100);
 	glEnd();
+
+	ragdoll->draw();
 }
 
 void StateReady::update()

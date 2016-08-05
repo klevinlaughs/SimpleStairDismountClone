@@ -27,7 +27,7 @@ void StateDismount::exit()
 
 void StateDismount::draw()
 {
-
+	ragdoll->draw();
 }
 
 void StateDismount::update()
