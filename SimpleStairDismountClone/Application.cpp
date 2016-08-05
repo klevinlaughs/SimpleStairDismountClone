@@ -28,10 +28,17 @@ namespace SSDC
 
 	void Application::init()
 	{
-		window.create(sf::VideoMode(800, 600), "Stair Dismount Clone");
+		sf::ContextSettings settings;
+		settings.depthBits = 24;
+		settings.stencilBits = 8;
+		settings.antialiasingLevel = 4;
+
+		window.create(sf::VideoMode(800, 600), "Stair Dismount Clone", sf::Style::Default, settings);
 
 		// white clear colour
 		glClearColor(1, 1, 1, 0);
+
+		glEnable(GL_DEPTH_TEST);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -39,7 +46,7 @@ namespace SSDC
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(75, window.getSize().x / (float)window.getSize().y, 1, 100);
+		gluPerspective(75, window.getSize().x / (float)window.getSize().y, 1, 200);
 		/*
 		int nearClip = 1;
 		int farClip = 10;

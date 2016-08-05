@@ -43,15 +43,17 @@ void StateManager::initWorld()
 	world = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
 	world->setGravity(btVector3(0, -9.81, 0));
 
-	btCollisionShape *ground = new btStaticPlaneShape(btVector3(0, 1, 0), 0);
+	{
+		btCollisionShape *ground = new btStaticPlaneShape(btVector3(0, 1, 0), 0);
 
-	btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1)));
+		btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1)));
 
-	btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, groundMotionState, ground, btVector3(0, 0, 0));
+		btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, groundMotionState, ground, btVector3(0, 0, 0));
 
-	btRigidBody *groundRigidBody = new btRigidBody(groundRigidBodyCI);
+		btRigidBody *groundRigidBody = new btRigidBody(groundRigidBodyCI);
 
-	world->addRigidBody(groundRigidBody);
+		world->addRigidBody(groundRigidBody);
+	}
 }
 
 void StateManager::initRagdoll()
