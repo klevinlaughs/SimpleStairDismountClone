@@ -14,9 +14,10 @@ StateManager::StateManager()
 	world = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
 	world->setGravity(btVector3(0, -9.81, 0));
 
+	ragdoll = new Ragdoll(world);
 
-	_states[0] = new StateReady();
-	_states[1] = new StateDismount();
+	_states[0] = new StateReady(world, ragdoll);
+	_states[1] = new StateDismount(world, ragdoll);
 	currentState = _states[0];
 }
 
