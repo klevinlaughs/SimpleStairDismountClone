@@ -20,6 +20,9 @@ private:
 
 	State *currentState;
 	State *_states[2];
+
+	void initWorld();
+	void initRagdoll();
 public:
 	enum state { READY, DISMOUNT };
 	StateManager();
