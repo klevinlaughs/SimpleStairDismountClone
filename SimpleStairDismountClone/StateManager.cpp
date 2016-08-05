@@ -5,6 +5,16 @@
 
 StateManager::StateManager()
 {
+	// reference : http://www.opengl-tutorial.org/miscellaneous/clicking-on-objects/picking-with-a-physics-library/
+	broadphase = new btDbvtBroadphase();
+	collisionConfiguration = new btDefaultCollisionConfiguration();
+	dispatcher = new btCollisionDispatcher(collisionConfiguration);
+	solver = new btSequentialImpulseConstraintSolver();
+
+	world = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
+	world->setGravity(btVector3(0, -9.81, 0));
+
+
 	_states[0] = new StateReady();
 	_states[1] = new StateDismount();
 	currentState = _states[0];
@@ -13,6 +23,15 @@ StateManager::StateManager()
 
 StateManager::~StateManager()
 {
+	// TODO : delete other objects
+
+	// remove from memory
+	delete world;
+	delete solver;
+	delete dispatcher;
+	delete collisionConfiguration;
+	delete broadphase;
+
 	/*for (int i = 0; i < 2;i++) {
 		delete _states[i];
 	}*/
