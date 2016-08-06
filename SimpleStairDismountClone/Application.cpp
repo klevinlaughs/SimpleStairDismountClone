@@ -39,6 +39,9 @@ namespace SSDC
 		glClearColor(1, 1, 1, 0);
 		glEnable(GL_DEPTH_TEST);
 
+		//glCullFace(GL_BACK);
+		//glEnable(GL_CULL_FACE);
+
 		// enable lighting, GL_LIGHTi, where i from 0 to 7 or 8	 
 		//glEnable(GL_LIGHT0);
 		//glEnable(GL_LIGHT1);
