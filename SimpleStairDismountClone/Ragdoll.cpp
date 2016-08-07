@@ -27,6 +27,10 @@ void Ragdoll::draw()
 
 void Ragdoll::update()
 {
+	for (int i = 0; i < 15; i++)
+	{
+		//bodyParts[i]->update();
+	}
 }
 
 void Ragdoll::resetPosition()
