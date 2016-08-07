@@ -11,7 +11,7 @@ private:
 	virtual void updateRotation();
 public:
 	GrBulletObject();
-	GrBulletObject(btCollisionShape *collisionShape, btRigidBody *rigidBody);
+	GrBulletObject(btRigidBody *rigidBody);
 	~GrBulletObject();
 	virtual void draw();
 	virtual void update();

@@ -9,9 +9,8 @@ GrBulletObject::GrBulletObject()
 {
 }
 
-GrBulletObject::GrBulletObject(btCollisionShape * collisionShape, btRigidBody * rigidBody)
+GrBulletObject::GrBulletObject(btRigidBody * rigidBody)
 {
-	this->collisionShape = collisionShape;
 	this->rigidBody = rigidBody;
 }
 
