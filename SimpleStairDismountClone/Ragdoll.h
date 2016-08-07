@@ -47,6 +47,7 @@ private:
 
 	btDiscreteDynamicsWorld *world;
 	BulletObject *bodyParts[BODYPART_COUNT];
+	btTypedConstraint *m_joints[JOINT_COUNT];
 public:
 	Ragdoll();
 	Ragdoll(btDiscreteDynamicsWorld *world);
