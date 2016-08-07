@@ -15,6 +15,7 @@ BulletObject::BulletObject(btCollisionShape * collisionShape, btRigidBody * rigi
 
 BulletObject::~BulletObject()
 {
+	// TODO: remove shapes and objects
 }
 
 void BulletObject::draw()

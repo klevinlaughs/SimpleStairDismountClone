@@ -1,8 +1,5 @@
 #include "Ragdoll.h"
 
-// head, neck, torso, abdomen, pelvis; left and right upper arm, forearm, thigh, leg, foot
-// joint head-neck, neck-torso, torso-abdomen, abdomen-pelvis, torso and left right upper arm, left right upper arm and forearm, pelvis and left and right thigh, left and right thigh and leg, left and right leg and foot
-
 Ragdoll::Ragdoll()
 {
 }
@@ -23,12 +20,13 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
 
 Ragdoll::~Ragdoll()
 {
+	//TODO: remove constraints, bullet objects
 }
 
 void Ragdoll::draw()
 {
 	bodyParts[0]->draw();
-	for (int i = 0; i < 15; i++)
+	for (int i = 0; i < BODYPART_COUNT; i++)
 	{
 		//bodyParts[i]->draw();
 	}
@@ -37,7 +35,7 @@ void Ragdoll::draw()
 void Ragdoll::update()
 {
 	bodyParts[0]->update();
-	for (int i = 0; i < 15; i++)
+	for (int i = 0; i < BODYPART_COUNT; i++)
 	{
 		//bodyParts[i]->update();
 	}
