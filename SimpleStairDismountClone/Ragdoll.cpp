@@ -25,6 +25,10 @@ void Ragdoll::draw()
 	}
 }
 
+void Ragdoll::update()
+{
+}
+
 void Ragdoll::resetPosition()
 {
 }

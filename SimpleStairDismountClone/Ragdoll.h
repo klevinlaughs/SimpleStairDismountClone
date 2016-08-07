@@ -11,6 +11,7 @@ public:
 	Ragdoll(btDiscreteDynamicsWorld *world);
 	~Ragdoll();
 	void draw();
+	void update();
 	void resetPosition();
 };
 
