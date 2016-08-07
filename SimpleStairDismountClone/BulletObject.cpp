@@ -1,5 +1,5 @@
 #include "BulletObject.h"
-
+#include "SFML/OpenGL.hpp"
 
 BulletObject::BulletObject()
 {
@@ -18,7 +18,36 @@ BulletObject::~BulletObject()
 
 void BulletObject::draw()
 {
+	glColor3f(0, 1, 0);
+	glPushMatrix();
 
+	glTranslatef(origin.x, origin.y, origin.z);
+
+	glRotatef(rotationAngle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
+
+	glBegin(GL_QUAD_STRIP);
+	glVertex3f(-0.5, 0.5, 0.5);
+	glVertex3f(-0.5, -0.5, 0.5);
+	glVertex3f(0.5, 0.5, 0.5);
+	glVertex3f(0.5, -0.5, 0.5);
+	glVertex3f(0.5, 0.5, -0.5);
+	glVertex3f(0.5, -0.5, -0.5);
+	glVertex3f(-0.5, 0.5, -0.5);
+	glVertex3f(-0.5, 0.5, -0.5);
+	glEnd();
+	
+	glBegin(GL_QUADS);
+	glVertex3f(0.5, 0.5, 0.5);
+	glVertex3f(0.5, 0.5, -0.5);
+	glVertex3f(-0.5, 0.5, -0.5);
+	glVertex3f(-0.5, 0.5, 0.5);
+
+	glVertex3f(0.5, -0.5, 0.5);
+	glVertex3f(-0.5, -0.5, 0.5);
+	glVertex3f(-0.5, -0.5, -0.5);
+	glVertex3f(0.5, -0.5, -0.5);
+	glEnd();
+	glPopMatrix;
 }
 
 void BulletObject::update()

@@ -1,6 +1,5 @@
 #include "StateReady.h"
-#include <Windows.h>
-#include <GL/GL.h>
+#include "SFML/OpenGL.hpp"
 #include <GL/GLU.h>
 
 StateReady::StateReady(btDiscreteDynamicsWorld *world, Ragdoll *ragdoll)
