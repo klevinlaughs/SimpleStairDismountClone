@@ -26,9 +26,9 @@ void GrBulletObject::draw()
 	glColor3f(0, 1, 0);
 	glPushMatrix();
 
-	glTranslatef(origin.x, origin.y, origin.z);
+	glTranslatef((GLfloat)origin.x, (GLfloat)origin.y, (GLfloat)origin.z);
 
-	glRotatef((GLfloat) rotationAngle, (GLfloat)rotationAxis.x, (GLfloat)rotationAxis.y, (GLfloat)rotationAxis.z);
+	glRotatef((GLfloat)rotationAngle, (GLfloat)rotationAxis.x, (GLfloat)rotationAxis.y, (GLfloat)rotationAxis.z);
 
 	glBegin(GL_QUAD_STRIP);
 	glVertex3f(-0.5, 0.5, 0.5);
