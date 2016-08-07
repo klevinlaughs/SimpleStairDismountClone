@@ -34,17 +34,17 @@ void StateReady::draw()
 	glLoadIdentity();
 
 	// look at before drawing
-	gluLookAt(5, 6, 30, 5, 5, 0, 0, 1, 0);
+	gluLookAt(3, 3, 3, 0, 1.5, 0, 0, 1, 0);
 
 	// draw...		 
 	//red
-	glColor3f(1, 0, 0);
+	/*glColor3f(1, 0, 0);
 
 	glBegin(GL_TRIANGLES);
 	glVertex3f(0, 0, 0);
 	glVertex3f(10, 0, 2);
 	glVertex3f(3, 10, 0);
-	glEnd();
+	glEnd();*/
 
 	glColor3f(GLfloat(0.7), GLfloat(0.6), GLfloat(0.5));
 	glBegin(GL_QUADS);

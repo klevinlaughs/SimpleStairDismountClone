@@ -37,7 +37,7 @@ GrBulletObject::GrBulletObject(btRigidBody * rigidBody)
 
 GrBulletObject::~GrBulletObject()
 {
-	// TODO: remove shapes and objects
+	// TODO: remove shapes and objects and motion states
 }
 
 void GrBulletObject::draw()
@@ -102,5 +102,21 @@ void GrBulletObject::updateRotation()
 
 void GrBulletObject::resetPosition()
 {
-	// need to reset motion state
+	// http://bulletphysics.org/Bullet/phpBB3/viewtopic.php?t=11000
+
+	rigidBody->clearForces();
+	btVector3 zeroVector(0, 0, 0);
+	rigidBody->setLinearVelocity(zeroVector);
+	rigidBody->setAngularVelocity(zeroVector);
+
+	btQuaternion rotation(btVector3(startRotationAxis.x, startRotationAxis.y, startRotationAxis.z), startRotationAngle * M_PI / 180);
+	btVector3 translate(startOrigin.x, startOrigin.y, startOrigin.z);
+
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(translate);
+	startTransform.setRotation(rotation);
+
+	rigidBody->setWorldTransform(startTransform);
+	rigidBody->getMotionState()->setWorldTransform(startTransform);
 }

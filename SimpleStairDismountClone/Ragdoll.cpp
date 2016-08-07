@@ -222,4 +222,8 @@ void Ragdoll::update()
 
 void Ragdoll::resetPosition()
 {
+	for (int i = 0; i < BODYPART_COUNT; i++)
+	{
+		bodyParts[i]->resetPosition();
+	}
 }
