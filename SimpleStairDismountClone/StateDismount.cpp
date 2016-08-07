@@ -32,7 +32,9 @@ void StateDismount::draw()
 
 void StateDismount::update()
 {
-
+	clock.reset();
+	btScalar timeDiff = clock.getTimeSeconds();
+	world->stepSimulation(timeDiff);
 }
 
 std::string StateDismount::getName()

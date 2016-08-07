@@ -10,6 +10,7 @@ private:
 	std::string name = "DISMOUNT";
 	btDiscreteDynamicsWorld *world;
 	Ragdoll *ragdoll;
+	btClock clock;
 public:
 	StateDismount(btDiscreteDynamicsWorld *world, Ragdoll *ragdoll);
 	~StateDismount();
