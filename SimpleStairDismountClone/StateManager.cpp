@@ -25,6 +25,8 @@ StateManager::~StateManager()
 	delete collisionConfiguration;
 	delete broadphase;
 
+	delete ragdoll;
+
 	/*for (int i = 0; i < 2;i++) {
 		delete _states[i];
 	}*/
