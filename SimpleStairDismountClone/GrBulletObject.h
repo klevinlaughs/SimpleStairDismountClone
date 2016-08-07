@@ -3,16 +3,16 @@
 #include "BulletCollision/CollisionShapes/btCollisionShape.h"
 #include "btBulletDynamicsCommon.h"
 
-class BulletObject :
+class GrBulletObject :
 	public GrObject
 {
 private:
 	virtual void updateOrigin();
 	virtual void updateRotation();
 public:
-	BulletObject();
-	BulletObject(btCollisionShape *collisionShape, btRigidBody *rigidBody);
-	~BulletObject();
+	GrBulletObject();
+	GrBulletObject(btCollisionShape *collisionShape, btRigidBody *rigidBody);
+	~GrBulletObject();
 	virtual void draw();
 	virtual void update();
 	btCollisionShape *collisionShape;

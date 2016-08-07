@@ -1,27 +1,27 @@
-#include "BulletObject.h"
+#include "GrBulletObject.h"
 #include "SFML/OpenGL.hpp"
 #include <iostream>
 
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-BulletObject::BulletObject()
+GrBulletObject::GrBulletObject()
 {
 }
 
-BulletObject::BulletObject(btCollisionShape * collisionShape, btRigidBody * rigidBody)
+GrBulletObject::GrBulletObject(btCollisionShape * collisionShape, btRigidBody * rigidBody)
 {
 	this->collisionShape = collisionShape;
 	this->rigidBody = rigidBody;
 }
 
 
-BulletObject::~BulletObject()
+GrBulletObject::~GrBulletObject()
 {
 	// TODO: remove shapes and objects
 }
 
-void BulletObject::draw()
+void GrBulletObject::draw()
 {
 	glColor3f(0, 1, 0);
 	glPushMatrix();
@@ -55,13 +55,13 @@ void BulletObject::draw()
 	glPopMatrix();
 }
 
-void BulletObject::update()
+void GrBulletObject::update()
 {
 	updateOrigin();
 	updateRotation();
 }
 
-void BulletObject::updateOrigin()
+void GrBulletObject::updateOrigin()
 {
 	btTransform transform;
 	rigidBody->getMotionState()->getWorldTransform(transform);
@@ -70,7 +70,7 @@ void BulletObject::updateOrigin()
 	origin.z = transform.getOrigin().getZ();
 }
 
-void BulletObject::updateRotation()
+void GrBulletObject::updateRotation()
 {
 	btTransform transform;
 	rigidBody->getMotionState()->getWorldTransform(transform);

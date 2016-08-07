@@ -15,7 +15,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
 	testShape->calculateLocalInertia(5, inertia);
 	btRigidBody::btRigidBodyConstructionInfo rbInfo(5, motionState, testShape, inertia);
 	btRigidBody *body = new btRigidBody(rbInfo);
-	bodyParts[0] = new BulletObject(testShape, body);
+	bodyParts[0] = new GrBulletObject(testShape, body);
 
 
 	// create joints

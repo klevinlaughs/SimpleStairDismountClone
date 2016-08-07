@@ -33,10 +33,10 @@
     <ClCompile Include="StateReady.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BulletObject.cpp">
+    <ClCompile Include="Ragdoll.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ragdoll.cpp">
+    <ClCompile Include="GrBulletObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,10 +62,10 @@
     <ClInclude Include="StateReady.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BulletObject.h">
+    <ClInclude Include="Ragdoll.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Ragdoll.h">
+    <ClInclude Include="GrBulletObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

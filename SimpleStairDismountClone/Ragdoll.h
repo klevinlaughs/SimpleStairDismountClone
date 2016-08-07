@@ -1,6 +1,6 @@
 #pragma once 
 #include "BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
-#include "BulletObject.h"
+#include "GrBulletObject.h"
 class Ragdoll
 {
 private:
@@ -46,7 +46,7 @@ private:
 	};
 
 	btDiscreteDynamicsWorld *world;
-	BulletObject *bodyParts[BODYPART_COUNT];
+	GrBulletObject *bodyParts[BODYPART_COUNT];
 	btTypedConstraint *m_joints[JOINT_COUNT];
 public:
 	Ragdoll();
