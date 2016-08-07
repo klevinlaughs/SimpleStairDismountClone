@@ -8,7 +8,7 @@ class BulletObject :
 {
 private:
 	virtual void updateOrigin();
-	virtual void updateAxis();
+	virtual void updateRotation();
 public:
 	BulletObject();
 	BulletObject(btCollisionShape *collisionShape, btRigidBody *rigidBody);

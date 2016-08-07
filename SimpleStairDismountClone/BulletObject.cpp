@@ -18,12 +18,13 @@ BulletObject::~BulletObject()
 
 void BulletObject::draw()
 {
+
 }
 
 void BulletObject::update()
 {
 	updateOrigin();
-	updateAxis();
+	updateRotation();
 }
 
 void BulletObject::updateOrigin()
@@ -35,9 +36,12 @@ void BulletObject::updateOrigin()
 	origin.z = transform.getOrigin().z;
 }
 
-void BulletObject::updateAxis()
+void BulletObject::updateRotation()
 {
 	btTransform transform;
 	rigidBody->getMotionState()->getWorldTransform(transform);
-	//axis.x
+	rotationAxis.x = transform.getRotation().getAxis().x;
+	rotationAxis.y = transform.getRotation().getAxis().y;
+	rotationAxis.z = transform.getRotation().getAxis().z;
+	rotationAngle = transform.getRotation().getAngle();
 }

@@ -9,7 +9,8 @@ class GrObject
 {
 protected:
 	Vector origin;
-	Vector axis;
+	Vector rotationAxis;
+	double rotationAngle;
 public:
 	GrObject();
 	~GrObject();
