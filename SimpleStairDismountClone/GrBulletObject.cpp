@@ -20,6 +20,7 @@ GrBulletObject::GrBulletObject(btRigidBody * rigidBody)
 		origin.y = transform.getOrigin().getY();
 		origin.z = transform.getOrigin().getZ();
 	}
+	startOrigin = origin;
 
 	{
 		btTransform transform;
@@ -29,6 +30,8 @@ GrBulletObject::GrBulletObject(btRigidBody * rigidBody)
 		rotationAxis.z = transform.getRotation().getAxis().getZ();
 		rotationAngle = transform.getRotation().getAngle() * 180 / M_PI;
 	}
+	startRotationAxis = rotationAxis;
+	startRotationAngle = rotationAngle;
 }
 
 
@@ -99,4 +102,5 @@ void GrBulletObject::updateRotation()
 
 void GrBulletObject::resetPosition()
 {
+	// need to reset motion state
 }
