@@ -19,7 +19,7 @@ private:
 	btDiscreteDynamicsWorld *world;
 
 	State *currentState;
-	State *_states[2];
+	State *states[2];
 
 	void initWorld();
 	void initRagdoll();

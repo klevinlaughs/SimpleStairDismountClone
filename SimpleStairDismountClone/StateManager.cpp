@@ -8,9 +8,9 @@ StateManager::StateManager()
 {
 	initWorld();
 
-	_states[0] = new StateReady(world, ragdoll);
-	_states[1] = new StateDismount(world, ragdoll);
-	currentState = _states[0];
+	states[0] = new StateReady(world, ragdoll);
+	states[1] = new StateDismount(world, ragdoll);
+	currentState = states[0];
 }
 
 
@@ -70,6 +70,6 @@ State *StateManager::getCurrentState()
 void StateManager::goTo(state nextState)
 {
 	currentState->exit();
-	currentState = _states[nextState];
+	currentState = states[nextState];
 	currentState->init();
 }
