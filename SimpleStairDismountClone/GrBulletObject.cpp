@@ -38,6 +38,9 @@ GrBulletObject::GrBulletObject(btRigidBody * rigidBody)
 GrBulletObject::~GrBulletObject()
 {
 	// TODO: remove shapes and objects and motion states
+	delete rigidBody->getCollisionShape();
+	delete rigidBody->getMotionState();
+	delete rigidBody;
 }
 
 void GrBulletObject::draw()

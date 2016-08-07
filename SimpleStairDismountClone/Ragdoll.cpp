@@ -259,7 +259,18 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 
 Ragdoll::~Ragdoll()
 {
-	//TODO: remove constraints, bullet objects, which probably have to delete motion states
+
+	for (int i = 0; i < JOINT_COUNT;i++)
+	{
+		// TODO: remove constraints and delete constraints
+	}
+
+	for (int i = 0; i < BODYPART_COUNT; i++)
+	{
+		// TODO: doesn't like
+		//world->removeRigidBody(bodyParts[i]->rigidBody);
+		delete bodyParts[i];
+	}
 }
 
 void Ragdoll::draw()

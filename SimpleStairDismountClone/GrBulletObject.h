@@ -21,7 +21,6 @@ public:
 	virtual void update();
 	void resetPosition();
 	void activate();
-	btCollisionShape *collisionShape;
 	btRigidBody *rigidBody;
 };
 
