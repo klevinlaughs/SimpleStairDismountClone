@@ -48,6 +48,7 @@ void StateReady::draw()
 
 	glColor3f(GLfloat(0.7), GLfloat(0.6), GLfloat(0.5));
 	glBegin(GL_QUADS);
+	glNormal3f(0, 1, 0);
 	glVertex3f(100, 0, 100);
 	glVertex3f(100, 0, -100);
 	glVertex3f(-100, 0, -100);

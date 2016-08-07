@@ -51,7 +51,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
 	double legMass = bodyMass * 5.05/100;
 
 	// left leg
-	bpShape = new btBoxShape(btVector3(legRadius, legHeight, legRadius));
+	bpShape = new btBoxShape(btVector3(legRadius, legHeight/2, legRadius));
 	bpRotation = btQuaternion(0, 0, 0, 1);
 	bpTranslation = btVector3(0, legTop-legHeight/2, -footZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));

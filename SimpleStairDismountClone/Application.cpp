@@ -39,8 +39,8 @@ namespace SSDC
 		glClearColor(1, 1, 1, 0);
 		glEnable(GL_DEPTH_TEST);
 
-		//glCullFace(GL_BACK);
-		//glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		glEnable(GL_CULL_FACE);
 
 		// enable lighting, GL_LIGHTi, where i from 0 to 7 or 8	 
 		//glEnable(GL_LIGHT0);
@@ -50,6 +50,13 @@ namespace SSDC
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
+		GLfloat lightParams[4] = {5,6,7,1};
+		glLightfv(GL_LIGHT0, GL_POSITION, lightParams);
+
+		/*GLfloat modelParams[4] = { 0.4, 0.4, 0.4, 1 };
+		glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, 1);
+		glLightModelfv(GL_LIGHT_MODEL_AMBIENT, modelParams);*/
+
 		//gluLookAt(5, 6, 5, 5, 5, 0, 0, 1, 0);
 
 		glMatrixMode(GL_PROJECTION);
@@ -79,6 +86,12 @@ namespace SSDC
 
 		// clear the buffers
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+		glEnable(GL_LIGHT0);
+		//glEnable(GL_LIGHT1);
+		glEnable(GL_LIGHTING);
+		glEnable(GL_COLOR_MATERIAL);
 
 		//------------------------------------------------
 		stateManager.getCurrentState()->draw();

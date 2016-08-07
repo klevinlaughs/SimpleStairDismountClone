@@ -50,26 +50,62 @@ void GrBulletObject::draw()
 	glRotatef((GLfloat)rotationAngle, (GLfloat)rotationAxis.x, (GLfloat)rotationAxis.y, (GLfloat)rotationAxis.z);
 
 	glBegin(GL_QUAD_STRIP);
-	glVertex3f(-0.1, 0.1, 0.1);
-	glVertex3f(-0.1, -0.1, 0.1);
-	glVertex3f(0.1, 0.1, 0.1);
-	glVertex3f(0.1, -0.1, 0.1);
-	glVertex3f(0.1, 0.1, -0.1);
-	glVertex3f(0.1, -0.1, -0.1);
-	glVertex3f(-0.1, 0.1, -0.1);
-	glVertex3f(-0.1, -0.1, -0.1);
+	glNormal3f(-0.5, 0.5, 0.5);
+	glVertex3f(-0.5, 0.5, 0.5);
+
+	glNormal3f(-0.5, -0.5, 0.5);
+	glVertex3f(-0.5, -0.5, 0.5);
+
+	glNormal3f(0.5, 0.5, 0.5);
+	glVertex3f(0.5, 0.5, 0.5);
+
+	glNormal3f(0.5, -0.5, 0.5);
+	glVertex3f(0.5, -0.5, 0.5);
+
+	glNormal3f(0.5, 0.5, -0.5);
+	glVertex3f(0.5, 0.5, -0.5);
+
+	glNormal3f(0.5, -0.5, -0.5);
+	glVertex3f(0.5, -0.5, -0.5);
+
+	glNormal3f(-0.5, 0.5, -0.5);
+	glVertex3f(-0.5, 0.5, -0.5);
+
+	glNormal3f(-0.5, -0.5, -0.5);
+	glVertex3f(-0.5, -0.5, -0.5);
+
+	glNormal3f(-0.5, 0.5, 0.5);
+	glVertex3f(-0.5, 0.5, 0.5);
+
 	glEnd();
 	
 	glBegin(GL_QUADS);
-	glVertex3f(0.1, 0.1, 0.1);
-	glVertex3f(0.1, 0.1, -0.1);
-	glVertex3f(-0.1, 0.1, -0.1);
-	glVertex3f(-0.1, 0.1, 0.1);
+	glNormal3f(0.5, 0.5, 0.5);
+	glVertex3f(0.5, 0.5, 0.5);
 
-	glVertex3f(0.1, -0.1, 0.1);
-	glVertex3f(-0.1, -0.1, 0.1);
-	glVertex3f(-0.1, -0.1, -0.1);
-	glVertex3f(0.1, -0.1, -0.1);
+	glNormal3f(0.5, 0.5, -0.5);
+	glVertex3f(0.5, 0.5, -0.5);
+
+	glNormal3f(-0.5, 0.5, -0.5);
+	glVertex3f(-0.5, 0.5, -0.5);
+
+	glNormal3f(-0.5, 0.5, 0.5);
+	glVertex3f(-0.5, 0.5, 0.5);
+
+
+	glNormal3f(0.5, -0.5, 0.5);
+	glVertex3f(0.5, -0.5, 0.5);
+
+	glNormal3f(-0.5, -0.5, 0.5);
+	glVertex3f(-0.5, -0.5, 0.5);
+
+	glNormal3f(-0.5, -0.5, -0.5);
+	glVertex3f(-0.5, -0.5, -0.5);
+
+	glNormal3f(0.5, -0.5, -0.5);
+	glVertex3f(0.5, -0.5, -0.5);
+
+
 	glEnd();
 	glPopMatrix();
 }
