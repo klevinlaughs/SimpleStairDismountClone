@@ -1,5 +1,6 @@
 #include "StateDismount.h"	
 #include "SFML/OpenGL.hpp"
+#include <time.h>
 
 StateDismount::StateDismount(btDiscreteDynamicsWorld *world, Ragdoll *ragdoll)
 {
@@ -15,6 +16,9 @@ void StateDismount::init()
 {
 	clock.reset();
 	  // TODO : set RNG launch
+	srand(time(NULL));
+	int ran15 = rand() % 15;
+	// choose body part, set launch
 }
 
 void StateDismount::enter()

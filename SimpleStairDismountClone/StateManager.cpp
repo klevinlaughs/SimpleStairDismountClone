@@ -60,7 +60,7 @@ void StateManager::initWorld()
 
 void StateManager::initRagdoll()
 {
-	ragdoll = new Ragdoll(world);
+	ragdoll = new Ragdoll(world, 2.0);
 }
 
 

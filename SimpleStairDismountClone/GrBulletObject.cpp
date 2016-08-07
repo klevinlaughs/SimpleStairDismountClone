@@ -49,6 +49,7 @@ void GrBulletObject::draw()
 
 	glRotatef((GLfloat)rotationAngle, (GLfloat)rotationAxis.x, (GLfloat)rotationAxis.y, (GLfloat)rotationAxis.z);
 
+
 	glBegin(GL_QUAD_STRIP);
 	glNormal3f(-0.5, 0.5, 0.5);
 	glVertex3f(-0.5, 0.5, 0.5);
@@ -155,4 +156,9 @@ void GrBulletObject::resetPosition()
 
 	rigidBody->setWorldTransform(startTransform);
 	rigidBody->getMotionState()->setWorldTransform(startTransform);
+}
+
+void GrBulletObject::activate()
+{
+	rigidBody->activate(true);
 }

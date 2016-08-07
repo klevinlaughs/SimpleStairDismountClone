@@ -7,7 +7,7 @@ Ragdoll::Ragdoll()
 {
 }
 
-Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
+Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 {
 	this->world = world;
 
@@ -15,7 +15,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
 
 	// feet definition
 	double footLength = 0.24, footHeight = 0.05, footWidth = 0.15;
-	double footTop = footHeight;
+	double footTop = footHeight + heightOffset;
 	double footXOffset = 0.4, footZOffset = 0.167;
 	double footMass = bodyMass * 1.38/100;
 
@@ -285,5 +285,6 @@ void Ragdoll::resetPosition()
 	for (int i = 0; i < BODYPART_COUNT; i++)
 	{
 		bodyParts[i]->resetPosition();
+		bodyParts[i]->activate();
 	}
 }
