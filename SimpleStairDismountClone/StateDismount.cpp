@@ -1,4 +1,5 @@
-#include "StateDismount.h"			
+#include "StateDismount.h"	
+#include "SFML/OpenGL.hpp"
 
 StateDismount::StateDismount(btDiscreteDynamicsWorld *world, Ragdoll *ragdoll)
 {
@@ -28,6 +29,14 @@ void StateDismount::exit()
 
 void StateDismount::draw()
 {
+	glColor3f(GLfloat(0.7), GLfloat(0.6), GLfloat(0.5));
+	glBegin(GL_QUADS);
+	glVertex3f(100, 0, 100);
+	glVertex3f(100, 0, -100);
+	glVertex3f(-100, 0, -100);
+	glVertex3f(-100, 0, 100);
+	glEnd();
+
 	ragdoll->draw();
 }
 

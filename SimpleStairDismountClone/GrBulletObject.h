@@ -7,6 +7,10 @@ class GrBulletObject :
 	public GrObject
 {
 private:
+	Vector startOrigin;
+	Vector startRotationAxis;
+	double startRotationAngle;
+
 	virtual void updateOrigin();
 	virtual void updateRotation();
 public:
@@ -15,6 +19,7 @@ public:
 	~GrBulletObject();
 	virtual void draw();
 	virtual void update();
+	void resetPosition();
 	btCollisionShape *collisionShape;
 	btRigidBody *rigidBody;
 };

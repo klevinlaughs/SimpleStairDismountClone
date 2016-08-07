@@ -46,7 +46,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
 	rbInfo = btRigidBody::btRigidBodyConstructionInfo(bpMass, bpMotionState, bpShape, bpInertia);
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
-	bodyParts[BODYPART_LEFT_LEG] = new GrBulletObject(body);
+	bodyParts[BODYPART_LEFT_THIGH] = new GrBulletObject(body);
 
 	// right foot
 	bpShape = new btBoxShape(btVector3(0.12, 0.025, 0.075));
@@ -83,7 +83,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
 	rbInfo = btRigidBody::btRigidBodyConstructionInfo(bpMass, bpMotionState, bpShape, bpInertia);
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
-	bodyParts[BODYPART_RIGHT_LEG] = new GrBulletObject(body);
+	bodyParts[BODYPART_RIGHT_THIGH] = new GrBulletObject(body);
 
 	// pelvis 
 	bpShape = new btBoxShape(btVector3(0.095, 0.075, 0.175));
@@ -179,7 +179,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
 	rbInfo = btRigidBody::btRigidBodyConstructionInfo(bpMass, bpMotionState, bpShape, bpInertia);
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
-	bodyParts[BODYPART_RIGHT_LOWER_ARM] = new GrBulletObject(body);
+	bodyParts[BODYPART_NECK] = new GrBulletObject(body);
 
 	// head	 
 	bpShape = new btBoxShape(btVector3(0.1, 0.1415, 0.1));
@@ -191,7 +191,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
 	rbInfo = btRigidBody::btRigidBodyConstructionInfo(bpMass, bpMotionState, bpShape, bpInertia);
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
-	bodyParts[BODYPART_RIGHT_LOWER_ARM] = new GrBulletObject(body);
+	bodyParts[BODYPART_HEAD] = new GrBulletObject(body);
 
 	// create joints
 }
@@ -207,7 +207,7 @@ void Ragdoll::draw()
 	//bodyParts[0]->draw();
 	for (int i = 0; i < BODYPART_COUNT; i++)
 	{
-		//bodyParts[i]->draw();
+		bodyParts[i]->draw();
 	}
 }
 
