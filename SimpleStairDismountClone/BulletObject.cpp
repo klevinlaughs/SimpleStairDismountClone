@@ -5,6 +5,12 @@ BulletObject::BulletObject()
 {
 }
 
+BulletObject::BulletObject(btCollisionShape * collisionShape, btRigidBody * rigidBody)
+{
+	this->collisionShape = collisionShape;
+	this->rigidBody = rigidBody;
+}
+
 
 BulletObject::~BulletObject()
 {

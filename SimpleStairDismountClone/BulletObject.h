@@ -11,6 +11,7 @@ private:
 	virtual void updateAxis();
 public:
 	BulletObject();
+	BulletObject(btCollisionShape *collisionShape, btRigidBody *rigidBody);
 	~BulletObject();
 	virtual void draw();
 	virtual void update();
