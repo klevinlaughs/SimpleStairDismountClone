@@ -35,6 +35,7 @@ void StateDismount::update()
 	clock.reset();
 	btScalar timeDiff = clock.getTimeSeconds();
 	world->stepSimulation(timeDiff);
+	ragdoll->update();
 }
 
 std::string StateDismount::getName()
