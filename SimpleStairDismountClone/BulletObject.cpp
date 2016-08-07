@@ -1,5 +1,6 @@
 #include "BulletObject.h"
 #include "SFML/OpenGL.hpp"
+#include <iostream>
 
 BulletObject::BulletObject()
 {
@@ -63,6 +64,7 @@ void BulletObject::updateOrigin()
 	origin.x = transform.getOrigin().getX();
 	origin.y = transform.getOrigin().getY();
 	origin.z = transform.getOrigin().getZ();
+	std::cout << origin.x << ", " << origin.y << ", " << origin.z << std::endl;
 }
 
 void BulletObject::updateRotation()

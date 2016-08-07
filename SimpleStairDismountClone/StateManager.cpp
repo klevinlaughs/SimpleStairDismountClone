@@ -7,7 +7,7 @@
 StateManager::StateManager()
 {
 	initWorld();
-
+	initRagdoll();
 	states[0] = new StateReady(world, ragdoll);
 	states[1] = new StateDismount(world, ragdoll);
 	currentState = states[0];

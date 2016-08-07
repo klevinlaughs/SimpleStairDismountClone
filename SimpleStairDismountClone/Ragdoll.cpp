@@ -10,6 +10,14 @@ Ragdoll::Ragdoll()
 Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world)
 {
 	this->world = world;
+	btCollisionShape *testShape = new btBoxShape(btVector3(0.5, 0.5, 0.5));
+	btDefaultMotionState *motionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, 2, 0)));
+	btVector3 inertia(0, 0, 0);
+	testShape->calculateLocalInertia(5, inertia);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(5, motionState, testShape, inertia);
+	btRigidBody *body = new btRigidBody(rbInfo);
+	bodyParts[0] = new BulletObject(testShape, body);
+	world->addRigidBody(body);
 }
 
 
@@ -19,6 +27,7 @@ Ragdoll::~Ragdoll()
 
 void Ragdoll::draw()
 {
+	bodyParts[0]->draw();
 	for (int i = 0; i < 15; i++)
 	{
 		//bodyParts[i]->draw();
@@ -27,6 +36,7 @@ void Ragdoll::draw()
 
 void Ragdoll::update()
 {
+	bodyParts[0]->update();
 	for (int i = 0; i < 15; i++)
 	{
 		//bodyParts[i]->update();

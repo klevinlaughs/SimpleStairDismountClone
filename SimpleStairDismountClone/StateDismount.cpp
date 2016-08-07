@@ -12,6 +12,7 @@ StateDismount::~StateDismount()
 
 void StateDismount::init()
 {
+	clock.reset();
 	  // TODO : set RNG launch
 }
 
@@ -32,9 +33,9 @@ void StateDismount::draw()
 
 void StateDismount::update()
 {
-	clock.reset();
 	btScalar timeDiff = clock.getTimeSeconds();
-	world->stepSimulation(timeDiff);
+	double speed = 1 / 5000.f;
+	world->stepSimulation(timeDiff * speed);
 	ragdoll->update();
 }
 
