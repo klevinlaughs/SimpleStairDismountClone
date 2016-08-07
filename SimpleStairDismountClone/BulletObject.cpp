@@ -2,6 +2,9 @@
 #include "SFML/OpenGL.hpp"
 #include <iostream>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 BulletObject::BulletObject()
 {
 }
@@ -25,7 +28,7 @@ void BulletObject::draw()
 
 	glTranslatef(origin.x, origin.y, origin.z);
 
-	glRotatef(rotationAngle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
+	glRotatef((GLfloat) rotationAngle, (GLfloat)rotationAxis.x, (GLfloat)rotationAxis.y, (GLfloat)rotationAxis.z);
 
 	glBegin(GL_QUAD_STRIP);
 	glVertex3f(-0.5, 0.5, 0.5);
@@ -35,7 +38,7 @@ void BulletObject::draw()
 	glVertex3f(0.5, 0.5, -0.5);
 	glVertex3f(0.5, -0.5, -0.5);
 	glVertex3f(-0.5, 0.5, -0.5);
-	glVertex3f(-0.5, 0.5, -0.5);
+	glVertex3f(-0.5, -0.5, -0.5);
 	glEnd();
 	
 	glBegin(GL_QUADS);
@@ -65,7 +68,6 @@ void BulletObject::updateOrigin()
 	origin.x = transform.getOrigin().getX();
 	origin.y = transform.getOrigin().getY();
 	origin.z = transform.getOrigin().getZ();
-	std::cout << origin.x << ", " << origin.y << ", " << origin.z << std::endl;
 }
 
 void BulletObject::updateRotation()
@@ -75,5 +77,6 @@ void BulletObject::updateRotation()
 	rotationAxis.x = transform.getRotation().getAxis().getX();
 	rotationAxis.y = transform.getRotation().getAxis().getY();
 	rotationAxis.z = transform.getRotation().getAxis().getZ();
-	rotationAngle = transform.getRotation().getAngle();
+	rotationAngle = transform.getRotation().getAngle() * 180 / M_PI;
+	std::cout << rotationAxis.x << ", " << rotationAxis.y << ", " << rotationAxis.z << ": angle - " << rotationAngle << std::endl;
 }
