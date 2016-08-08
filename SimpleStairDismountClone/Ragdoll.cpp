@@ -19,7 +19,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	// feet definition
 	btScalar footLength = (btScalar)0.24, footHeight = (btScalar)0.05, footWidth = (btScalar)0.15;
 	btScalar footTop = footHeight + heightOffset;
-	btScalar footXOffset = (btScalar)0.4, footZOffset = (btScalar)0.167;
+	btScalar footXOffset = (btScalar)0.04, footZOffset = (btScalar)0.167;
 	btScalar footMass = bodyMass * (btScalar)1.38/100;
 
 	// left foot
@@ -58,7 +58,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	// left leg
 	bpShape = new btBoxShape(btVector3(legRadius, legHeight/2, legRadius));
 	bpRotation = btQuaternion(0, 0, 0, 1);
-	bpTranslation = btVector3(0, legTop-legHeight/2, -footZOffset);
+	bpTranslation = btVector3(0, legTop - legHeight / 2, -footZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
 	bpInertia = btVector3(0, 0, 0);
 	bpMass = legMass;
@@ -269,7 +269,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_HEAD] = new GrBulletObject(body);
-	addSphereLinker(headHeight, bodyParts[BODYPART_HEAD]);
+	addSphereLinker(headHeight/2, bodyParts[BODYPART_HEAD]);
 
 	// create joints
 }

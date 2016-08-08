@@ -39,8 +39,8 @@ namespace SSDC
 		glClearColor(1, 1, 1, 0);
 		glEnable(GL_DEPTH_TEST);
 
-		glCullFace(GL_BACK);
-		glEnable(GL_CULL_FACE);
+		//glCullFace(GL_BACK);
+		//glEnable(GL_CULL_FACE);
 
 		// enable lighting, GL_LIGHTi, where i from 0 to 7 or 8	 
 		//glEnable(GL_LIGHT0);
@@ -61,7 +61,7 @@ namespace SSDC
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(75, window.getSize().x / (float)window.getSize().y, 1, 200);
+		gluPerspective(75, window.getSize().x / (float)window.getSize().y, 1, 100);
 		/*
 		int nearClip = 1;
 		int farClip = 10;

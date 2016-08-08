@@ -34,7 +34,7 @@ void StateReady::draw()
 	glLoadIdentity();
 
 	// look at before drawing
-	gluLookAt(3, 3, 3, 0, 1.5, 0, 0, 1, 0);
+	gluLookAt(2.5, 2.5, 2.5, 0, 1.5, 0, 0, 1, 0);
 
 	// draw...		 
 	//red

@@ -17,7 +17,7 @@ GrLinkerCylinderShape::~GrLinkerCylinderShape()
 
 void GrLinkerCylinderShape::draw()
 {
-	glScalef((GLfloat)radius, (GLfloat)height, (GLfloat)radius);
+	glScalef((GLfloat)radius * 2, (GLfloat)height, (GLfloat)radius * 2);
 
 	glColor4f((GLfloat)r, (GLfloat)g, (GLfloat)b, (GLfloat)a);
 

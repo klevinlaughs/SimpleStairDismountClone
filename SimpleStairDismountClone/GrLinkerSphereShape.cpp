@@ -1,4 +1,5 @@
 #include "GrLinkerSphereShape.h"
+#include <iostream>
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -15,7 +16,7 @@ GrLinkerSphereShape::~GrLinkerSphereShape()
 
 void GrLinkerSphereShape::draw()
 {
-	glScalef((GLfloat)radius, (GLfloat)radius, (GLfloat)radius);
+	glScalef((GLfloat)radius * 2, (GLfloat)radius * 2, (GLfloat)radius * 2);
 
 	glColor4f((GLfloat)r, (GLfloat)g, (GLfloat)b, (GLfloat)a);
 
@@ -27,7 +28,7 @@ void GrLinkerSphereShape::draw()
 	GLfloat x, y, z;
 
 	// up and down
-	for (int i = 0; i < numOfSegments/2; i++)
+	for (int i = 0; i <= numOfSegments/2; i++)
 	{
 		fractionI = i / (double)(numOfSegments/2);
 		fractionI2 = (i + 1) / (double)(numOfSegments / 2);
@@ -45,6 +46,7 @@ void GrLinkerSphereShape::draw()
 
 			for (int j = 0; j <= numOfSegments; j++)
 			{
+				fractionJ = j / (double)numOfSegments;
 				x = (GLfloat)cos(fractionJ * 2 * M_PI) / 2;
 				y = (GLfloat)cos(fractionI2 * M_PI) / 2;
 				z = (GLfloat)sin(fractionJ * 2 * M_PI) / 2;
@@ -56,7 +58,7 @@ void GrLinkerSphereShape::draw()
 			glEnd();
 		}
 		// bottom
-		else if (i == (numOfSegments / 2) - 1)
+		else if (i == (numOfSegments / 2))
 		{
 			glBegin(GL_TRIANGLE_FAN);
 			x = (GLfloat)0;
@@ -68,6 +70,7 @@ void GrLinkerSphereShape::draw()
 
 			for (int j = 0; j <= numOfSegments; j++)
 			{
+				fractionJ = j / (double)numOfSegments;
 				x = (GLfloat)cos(fractionJ * 2 * M_PI) / 2;
 				y = (GLfloat)cos(fractionI * M_PI) / 2;
 				z = (GLfloat)sin(fractionJ * 2 * M_PI) / 2;
@@ -85,6 +88,7 @@ void GrLinkerSphereShape::draw()
 			glBegin(GL_QUAD_STRIP);
 			for (int j = 0; j <= numOfSegments; j++)
 			{
+				fractionJ = j / (double)numOfSegments;
 				x = (GLfloat)cos(fractionJ * 2 * M_PI) / 2;
 				y = (GLfloat)cos(fractionI * M_PI) / 2;
 				z = (GLfloat)sin(fractionJ * 2 * M_PI) / 2;
@@ -103,6 +107,68 @@ void GrLinkerSphereShape::draw()
 
 		}
 	}
+
+/*
+	glBegin(GL_QUAD_STRIP);
+	glNormal3f(-0.5, 0.5, 0.5);
+	glVertex3f(-0.5, 0.5, 0.5);
+
+	glNormal3f(-0.5, -0.5, 0.5);
+	glVertex3f(-0.5, -0.5, 0.5);
+
+	glNormal3f(0.5, 0.5, 0.5);
+	glVertex3f(0.5, 0.5, 0.5);
+
+	glNormal3f(0.5, -0.5, 0.5);
+	glVertex3f(0.5, -0.5, 0.5);
+
+	glNormal3f(0.5, 0.5, -0.5);
+	glVertex3f(0.5, 0.5, -0.5);
+
+	glNormal3f(0.5, -0.5, -0.5);
+	glVertex3f(0.5, -0.5, -0.5);
+
+	glNormal3f(-0.5, 0.5, -0.5);
+	glVertex3f(-0.5, 0.5, -0.5);
+
+	glNormal3f(-0.5, -0.5, -0.5);
+	glVertex3f(-0.5, -0.5, -0.5);
+
+	glNormal3f(-0.5, 0.5, 0.5);
+	glVertex3f(-0.5, 0.5, 0.5);
+
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glNormal3f(0.5, 0.5, 0.5);
+	glVertex3f(0.5, 0.5, 0.5);
+
+	glNormal3f(0.5, 0.5, -0.5);
+	glVertex3f(0.5, 0.5, -0.5);
+
+	glNormal3f(-0.5, 0.5, -0.5);
+	glVertex3f(-0.5, 0.5, -0.5);
+
+	glNormal3f(-0.5, 0.5, 0.5);
+	glVertex3f(-0.5, 0.5, 0.5);
+
+
+	glNormal3f(0.5, -0.5, 0.5);
+	glVertex3f(0.5, -0.5, 0.5);
+
+	glNormal3f(-0.5, -0.5, 0.5);
+	glVertex3f(-0.5, -0.5, 0.5);
+
+	glNormal3f(-0.5, -0.5, -0.5);
+	glVertex3f(-0.5, -0.5, -0.5);
+
+	glNormal3f(0.5, -0.5, -0.5);
+	glVertex3f(0.5, -0.5, -0.5);
+
+
+	glEnd();
+	glPopMatrix();
+*/
 }
 
 void GrLinkerSphereShape::setRGBA(double r, double g, double b, double a)
