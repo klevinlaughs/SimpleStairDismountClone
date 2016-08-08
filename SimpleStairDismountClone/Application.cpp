@@ -51,7 +51,9 @@ namespace SSDC
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		GLfloat lightParams[4] = {5,6,7,1};
+		GLfloat ambience[4] = { (GLfloat)0.4, (GLfloat)0.4, (GLfloat)0.4, (GLfloat)1 };
 		glLightfv(GL_LIGHT0, GL_POSITION, lightParams);
+		glLightfv(GL_LIGHT1, GL_AMBIENT, ambience);
 
 		/*GLfloat modelParams[4] = { 0.4, 0.4, 0.4, 1 };
 		glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, 1);
@@ -89,7 +91,7 @@ namespace SSDC
 
 
 		glEnable(GL_LIGHT0);
-		//glEnable(GL_LIGHT1);
+		glEnable(GL_LIGHT1);
 		glEnable(GL_LIGHTING);
 		glEnable(GL_COLOR_MATERIAL);
 
