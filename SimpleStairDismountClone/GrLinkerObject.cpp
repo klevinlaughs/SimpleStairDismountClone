@@ -12,16 +12,16 @@ GrLinkerObject::~GrLinkerObject()
 {
 }
 
-void GrLinkerObject::drawTransform(btQuaternion &rotation, btVector3 &translation)
+void GrLinkerObject::drawTransform(Vector translation, Vector rotationAxis, double rotationAngle)
 {
 	glColor3f(0, 1, 0);
 	glPushMatrix();
 
-	glTranslatef((GLfloat)translation.getX(), (GLfloat)translation.getY(), (GLfloat)translation.getZ());
-	//glTranslatef((GLfloat)origin.x, (GLfloat)origin.y, (GLfloat)origin.z);
+	//glTranslatef((GLfloat)translation.getX(), (GLfloat)translation.getY(), (GLfloat)translation.getZ());
+	glTranslatef((GLfloat)translation.x, (GLfloat)translation.y, (GLfloat)translation.z);
 
-	glRotatef((GLfloat)rotation.getAngle() * 180 /(GLfloat) M_PI, (GLfloat)rotation.getX(), (GLfloat)rotation.getY(), (GLfloat)rotation.getZ());
-	//glRotatef((GLfloat)rotationAngle, (GLfloat)rotationAxis.x, (GLfloat)rotationAxis.y, (GLfloat)rotationAxis.z);
+	//glRotatef((GLfloat)rotation.getAngle() * 180 /(GLfloat) M_PI, (GLfloat)rotation.getX(), (GLfloat)rotation.getY(), (GLfloat)rotation.getZ());
+	glRotatef((GLfloat)rotationAngle, (GLfloat)rotationAxis.x, (GLfloat)rotationAxis.y, (GLfloat)rotationAxis.z);
 
 	draw();
 
