@@ -16,7 +16,10 @@ StateManager::StateManager()
 
 StateManager::~StateManager()
 {
-	// TODO : delete other objects
+	// TODO : delete other objects	delete the *ground	  
+
+	// delete ragdoll first
+	delete ragdoll;
 
 	// remove from memory
 	delete world;
@@ -24,8 +27,6 @@ StateManager::~StateManager()
 	delete dispatcher;
 	delete collisionConfiguration;
 	delete broadphase;
-
-	delete ragdoll;
 
 	/*for (int i = 0; i < 2;i++) {
 		delete _states[i];

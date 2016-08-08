@@ -56,7 +56,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	btScalar legMass = bodyMass * (btScalar)5.05/100;
 
 	// left leg
-	bpShape = new btBoxShape(btVector3(legRadius, legHeight/2, legRadius));
+	bpShape = new btCapsuleShape(legRadius, legHeight - 2 * legRadius);
 	bpRotation = btQuaternion(0, 0, 0, 1);
 	bpTranslation = btVector3(0, legTop - legHeight / 2, -footZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
@@ -68,8 +68,8 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	bodyParts[BODYPART_LEFT_LEG] = new GrBulletObject(body);
 	addCylinderLinker(legRadius, legHeight, bodyParts[BODYPART_LEFT_LEG]);
 
-	// right leg											 
-	bpShape = new btBoxShape(btVector3(legRadius, legHeight, legRadius));
+	// right leg											 			  
+	bpShape = new btCapsuleShape(legRadius, legHeight - 2 * legRadius);
 	bpRotation = btQuaternion(0, 0, 0, 1);
 	bpTranslation = btVector3(0, legTop - legHeight / 2, footZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
@@ -89,8 +89,8 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	btScalar thighZOffset = (btScalar)0.1136;
 	btScalar thighMass = bodyMass * (btScalar)11.125/100;
 
-	// left thigh  h=0.316
-	bpShape = new btBoxShape(btVector3(thighRadius, thighHeight/2, thighRadius));
+	// left thigh  h=0.316						 
+	bpShape = new btCapsuleShape(thighRadius, thighHeight - 2 * thighRadius);
 	bpRotation = btQuaternion(1 * btSin(thighAngle / 2), 0, 0, btCos(thighAngle / 2));
 	bpTranslation = btVector3(0, thighTop - thighAngledHeight/2, -thighZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
@@ -102,8 +102,8 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	bodyParts[BODYPART_LEFT_THIGH] = new GrBulletObject(body);
 	addCylinderLinker(thighRadius, thighHeight, bodyParts[BODYPART_LEFT_THIGH]);
 
-	// right thigh  h=0.316	, ends at 0.706				  
-	bpShape = new btBoxShape(btVector3(thighRadius, thighHeight / 2, thighRadius));
+	// right thigh  h=0.316	, ends at 0.706				  							
+	bpShape = new btCapsuleShape(thighRadius, thighHeight - 2 * thighRadius);
 	bpRotation = btQuaternion(-1 * btSin(thighAngle / 2), 0, 0, btCos(thighAngle / 2));
 	bpTranslation = btVector3(0, thighTop - thighAngledHeight / 2, thighZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
@@ -177,7 +177,8 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	btScalar upperArmZOffset = (btScalar)0.223;
 	btScalar upperArmMass = bodyMass * (btScalar)3.075 / 100;
 
-	// left upper arm  
+	// left upper arm  			
+	bpShape = new btCapsuleShape(upperArmRadius, upperArmHeight - 2 * upperArmRadius);
 	bpShape = new btBoxShape(btVector3(upperArmRadius, upperArmHeight/2, upperArmRadius));
 	bpRotation = btQuaternion(1 * btSin(upperArmAngle/2), 0, 0, btCos(upperArmAngle/2));
 	bpTranslation = btVector3(0, upperArmBottom + upperArmAngledHeight/2, -upperArmZOffset);
@@ -190,8 +191,8 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	bodyParts[BODYPART_LEFT_UPPER_ARM] = new GrBulletObject(body);
 	addCylinderLinker(upperArmRadius, upperArmHeight, bodyParts[BODYPART_LEFT_UPPER_ARM]);
 
-	// right upper arm  									 
-	bpShape = new btBoxShape(btVector3(upperArmRadius, upperArmHeight / 2, upperArmRadius));
+	// right upper arm  									 									
+	bpShape = new btCapsuleShape(upperArmRadius, upperArmHeight - 2 * upperArmRadius);
 	bpRotation = btQuaternion(-1 * btSin(upperArmAngle / 2), 0, 0, btCos(upperArmAngle / 2));
 	bpTranslation = btVector3(0, upperArmBottom + upperArmAngledHeight / 2, upperArmZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
@@ -210,7 +211,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	btScalar lowerArmMass = bodyMass * (btScalar)1.72 / 100;
 
 	// left lower arm  
-	bpShape = new btBoxShape(btVector3(lowerArmRadius, lowerArmHeight/2, lowerArmRadius));
+	bpShape = new btCapsuleShape(lowerArmRadius, lowerArmHeight - 2 * lowerArmRadius);
 	bpRotation = btQuaternion(0, 0, 0, 1);
 	bpTranslation = btVector3(0, lowerArmTop - lowerArmHeight/2, -lowerArmZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
@@ -222,8 +223,8 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	bodyParts[BODYPART_LEFT_LOWER_ARM] = new GrBulletObject(body);
 	addCylinderLinker(lowerArmRadius, lowerArmHeight, bodyParts[BODYPART_LEFT_LOWER_ARM]);
 
-	// right lower arm     
-	bpShape = new btBoxShape(btVector3(lowerArmRadius, lowerArmHeight / 2, lowerArmRadius));
+	// right lower arm     																	  
+	bpShape = new btCapsuleShape(lowerArmRadius, lowerArmHeight - 2 * lowerArmRadius);
 	bpRotation = btQuaternion(0, 0, 0, 1);
 	bpTranslation = btVector3(0, lowerArmTop - lowerArmHeight / 2, lowerArmZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
@@ -258,8 +259,8 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	btScalar headTop = neckTop + headHeight;
 	btScalar headMass = (btScalar)5.0;
 
-	// head	 
-	bpShape = new btBoxShape(btVector3(headRadius, headHeight/2, headRadius));
+	// head	 																  
+	bpShape = new btCapsuleShape(headRadius, headHeight-2*headRadius);
 	bpRotation = btQuaternion(0, 0, 0, 1);
 	bpTranslation = btVector3(0, headTop - headHeight/2, 0);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
@@ -272,21 +273,194 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	addSphereLinker(headHeight/2, bodyParts[BODYPART_HEAD]);
 
 	// create joints
+	btConeTwistConstraint *coneConstraint;
+	btHingeConstraint * hingeConstraint;
+
+	// head-neck
+	btTransform bodyA, bodyB;
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, 0, M_PI_2);
+	bodyA.setOrigin(btVector3(0, -headHeight/2 - 0.02, 0));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, 0, M_PI_2);
+	bodyB.setOrigin(btVector3(0, neckHeight/2 + 0.01, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_HEAD]->getRigidBody(), *bodyParts[BODYPART_NECK]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_4, M_PI_4, M_PI_2);
+	joints[JOINT_HEAD_NECK] = coneConstraint;
+	world->addConstraint(joints[JOINT_HEAD_NECK], true);
+
+	// neck-thorax
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, 0, M_PI_2);
+	bodyA.setOrigin(btVector3(0, -neckHeight/2 - 0.02, 0));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, 0, M_PI_2);
+	bodyB.setOrigin(btVector3(0, thoraxHeight / 2 + 0.02, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_NECK]->getRigidBody(), *bodyParts[BODYPART_THORAX]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_4, M_PI_4, 0);
+	joints[JOINT_NECK_THORAX] = coneConstraint;
+	world->addConstraint(joints[JOINT_NECK_THORAX], true);
+
+	// thorax-leftupperarm																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, thoraxHeight / 2 - upperArmRadius, -(thoraxWidth / 2 + upperArmRadius)));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(0, upperArmHeight / 2 + upperArmRadius, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_THORAX]->getRigidBody(), *bodyParts[BODYPART_LEFT_UPPER_ARM]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_2, M_PI_2, 0);
+	joints[JOINT_THORAX_LEFT_UPPER_ARM] = coneConstraint;
+	world->addConstraint(joints[JOINT_THORAX_LEFT_UPPER_ARM], true);
+
+	// left upper-lower arm	 																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, -(upperArmHeight / 2 + upperArmRadius / 2), 0));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(0, lowerArmHeight / 2 + lowerArmRadius / 2, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_LEFT_UPPER_ARM]->getRigidBody(), *bodyParts[BODYPART_LEFT_LOWER_ARM]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_2, M_PI_2, M_PI_4);
+	joints[JOINT_LEFT_ARM_UPPER_LOWER] = coneConstraint;
+	world->addConstraint(joints[JOINT_LEFT_ARM_UPPER_LOWER], true);
+
+	// thorax-rightupperarm																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, -M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, thoraxHeight / 2 - upperArmRadius, (thoraxWidth / 2 + upperArmRadius)));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, -M_PI_2, 0);
+	bodyB.setOrigin(btVector3(0, upperArmHeight / 2 + upperArmRadius, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_THORAX]->getRigidBody(), *bodyParts[BODYPART_RIGHT_UPPER_ARM]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_2, M_PI_2, 0);
+	joints[JOINT_THORAX_RIGHT_UPPER_ARM] = coneConstraint;
+	world->addConstraint(joints[JOINT_THORAX_RIGHT_UPPER_ARM], true);
+
+	// right upper-lower arm	 																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, -(upperArmHeight / 2 + upperArmRadius / 2), 0));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(0, lowerArmHeight / 2 + lowerArmRadius / 2, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_RIGHT_UPPER_ARM]->getRigidBody(), *bodyParts[BODYPART_RIGHT_LOWER_ARM]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_2, M_PI_2, M_PI_4);
+	joints[JOINT_RIGHT_ARM_UPPER_LOWER] = coneConstraint;
+	world->addConstraint(joints[JOINT_RIGHT_ARM_UPPER_LOWER], true);
+
+	// thorax-abdomen  	 																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, -(thoraxHeight/2 - 0.05), 0));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(0, abdomenHeight/2 + 0.05, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_THORAX]->getRigidBody(), *bodyParts[BODYPART_ABDOMEN]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_4, M_PI_4, 0);
+	joints[JOINT_THORAX_ADBOMEN] = coneConstraint;
+	world->addConstraint(joints[JOINT_THORAX_ADBOMEN], true);
+
+	// abdomen-pelvis   	 																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, -(abdomenHeight/2 - 0.05), 0));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(0, pelvisHeight/2 + 0.05, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_ABDOMEN]->getRigidBody(), *bodyParts[BODYPART_PELVIS]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_4, M_PI_4, 0);
+	joints[JOINT_ABDOMEN_PELVIS] = coneConstraint;
+	world->addConstraint(joints[JOINT_ABDOMEN_PELVIS], true);
+
+	// pelvis-leftthigh	   	 																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, -(pelvisHeight / 2 + thighRadius), -(pelvisWidth/2 - thighRadius)));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(0, thighHeight/2 + thighRadius, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_PELVIS]->getRigidBody(), *bodyParts[BODYPART_LEFT_THIGH]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_4, M_PI_4, 0);
+	joints[JOINT_PELVIS_LEFT_THIGH] = coneConstraint;
+	world->addConstraint(joints[JOINT_PELVIS_LEFT_THIGH], true);
+
+	// left thigh-leg 	 																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, -(thighHeight / 2 + thighRadius), 0));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(0, legHeight / 2 + legRadius, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_LEFT_THIGH]->getRigidBody(), *bodyParts[BODYPART_LEFT_LEG]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_4, M_PI_4, 0);
+	joints[JOINT_LEFT_THIGH_LEG] = coneConstraint;
+	world->addConstraint(joints[JOINT_LEFT_THIGH_LEG], true);
+
+	// left leg-foot    																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, -(legHeight / 2 + legRadius), 0));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(-footXOffset, footHeight + 0.03, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_LEFT_LEG]->getRigidBody(), *bodyParts[BODYPART_LEFT_FOOT]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_4, M_PI_4, 0);
+	joints[JOINT_LEFT_LEG_FOOT] = coneConstraint;
+	world->addConstraint(joints[JOINT_LEFT_LEG_FOOT], true);
+
+
+	// pelvis-rightthigh	   	 																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, -(pelvisHeight / 2 + thighRadius), (pelvisWidth / 2 - thighRadius)));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(0, thighHeight / 2 + thighRadius, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_PELVIS]->getRigidBody(), *bodyParts[BODYPART_RIGHT_THIGH]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_4, M_PI_4, 0);
+	joints[JOINT_PELVIS_RIGHT_THIGH] = coneConstraint;
+	world->addConstraint(joints[JOINT_PELVIS_RIGHT_THIGH], true);
+
+	// RIGHT thigh-leg 	 																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, -(thighHeight / 2 + thighRadius), 0));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(0, legHeight / 2 + legRadius, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_RIGHT_THIGH]->getRigidBody(), *bodyParts[BODYPART_RIGHT_LEG]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_4, M_PI_4, 0);
+	joints[JOINT_RIGHT_THIGH_LEG] = coneConstraint;
+	world->addConstraint(joints[JOINT_RIGHT_THIGH_LEG], true);
+
+	// RIGHT leg-foot    																		  
+	bodyA.setIdentity();
+	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyA.setOrigin(btVector3(0, -(legHeight / 2 + legRadius), 0));
+	bodyB.setIdentity();
+	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
+	bodyB.setOrigin(btVector3(-footXOffset, footHeight + 0.03, 0));
+	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_RIGHT_LEG]->getRigidBody(), *bodyParts[BODYPART_RIGHT_FOOT]->getRigidBody(), bodyA, bodyB);
+	coneConstraint->setLimit(M_PI_4, M_PI_4, 0);
+	joints[JOINT_RIGHT_LEG_FOOT] = coneConstraint;
+	world->addConstraint(joints[JOINT_RIGHT_LEG_FOOT], true);
+
 }
 
 
 Ragdoll::~Ragdoll()
 {
-
 	for (int i = 0; i < JOINT_COUNT;i++)
 	{
 		// TODO: remove constraints and delete constraints
+		world->removeConstraint(joints[i]);
+		delete joints[i];
 	}
 
 	for (int i = 0; i < BODYPART_COUNT; i++)
 	{
-		// TODO: doesn't like
-		//world->removeRigidBody(bodyParts[i]->rigidBody);
+		world->removeRigidBody(bodyParts[i]->rigidBody);
 		delete bodyParts[i];
 	}
 }

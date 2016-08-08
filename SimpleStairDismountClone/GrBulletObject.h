@@ -25,5 +25,6 @@ public:
 	void activate();
 	void setLinker(GrLinkerObject *linker);
 	btRigidBody *rigidBody;
+	btRigidBody *getRigidBody();
 };
 

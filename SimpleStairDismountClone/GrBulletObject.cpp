@@ -173,3 +173,8 @@ void GrBulletObject::setLinker(GrLinkerObject *linker)
 {
 	this->linker = linker;
 }
+
+btRigidBody *GrBulletObject::getRigidBody()
+{
+	return rigidBody;
+}
