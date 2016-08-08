@@ -48,6 +48,10 @@ private:
 	btDiscreteDynamicsWorld *world;
 	GrBulletObject *bodyParts[BODYPART_COUNT];
 	btTypedConstraint *joints[JOINT_COUNT];
+
+	void addBoxLinker(btScalar halfX, btScalar halfY, btScalar halfZ, GrBulletObject *object);
+	void addCylinderLinker(btScalar radius, btScalar height, GrBulletObject *object);
+	void addSphereLinker(btScalar radius, GrBulletObject *object);
 public:
 	Ragdoll();
 	Ragdoll(btDiscreteDynamicsWorld *world, btScalar heightOffset);

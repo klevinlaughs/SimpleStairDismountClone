@@ -1,4 +1,7 @@
 #include "Ragdoll.h"
+#include "GrLinkerBoxShape.h"
+#include "GrLinkerCylinderShape.h"
+#include "GrLinkerSphereShape.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -298,4 +301,24 @@ void Ragdoll::resetPosition()
 		bodyParts[i]->resetPosition();
 		bodyParts[i]->activate();
 	}
+}
+
+
+
+void Ragdoll::addBoxLinker(btScalar halfX, btScalar halfY, btScalar halfZ, GrBulletObject * object)
+{
+	GrLinkerBoxShape *box = new GrLinkerBoxShape(halfX, halfY, halfZ);
+	object->setLinker(box);
+}
+
+void Ragdoll::addCylinderLinker(btScalar radius, btScalar height, GrBulletObject * object)
+{
+	GrLinkerCylinderShape *cylinder = new GrLinkerCylinderShape(radius, height);
+	object->setLinker(cylinder);
+}
+
+void Ragdoll::addSphereLinker(btScalar radius, GrBulletObject * object)
+{
+	GrLinkerSphereShape *sphere = new GrLinkerSphereShape(radius);
+	object->setLinker(sphere);
 }
