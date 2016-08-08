@@ -34,6 +34,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	btRigidBody *body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_LEFT_FOOT] = new GrBulletObject(body);
+	addBoxLinker(footLength / 2, footHeight / 2, footWidth / 2, bodyParts[BODYPART_LEFT_FOOT]);
 
 	// right foot				 
 	bpShape = new btBoxShape(btVector3(footLength / 2, footHeight / 2, footWidth / 2));
@@ -47,6 +48,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_RIGHT_FOOT] = new GrBulletObject(body);
+	addBoxLinker(footLength / 2, footHeight / 2, footWidth / 2, bodyParts[BODYPART_RIGHT_FOOT]);
 
 	// legs definition
 	btScalar legRadius = (btScalar)0.055, legHeight = (btScalar) 0.34;
@@ -64,6 +66,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_LEFT_LEG] = new GrBulletObject(body);
+	addCylinderLinker(legRadius, legHeight, bodyParts[BODYPART_LEFT_LEG]);
 
 	// right leg											 
 	bpShape = new btBoxShape(btVector3(legRadius, legHeight, legRadius));
@@ -76,6 +79,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_RIGHT_LEG] = new GrBulletObject(body);
+	addCylinderLinker(legRadius, legHeight, bodyParts[BODYPART_RIGHT_LEG]);
 
 	// thighs definition
 	btScalar thighRadius = (btScalar)0.07, thighHeight = (btScalar)0.32;
@@ -96,6 +100,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_LEFT_THIGH] = new GrBulletObject(body);
+	addCylinderLinker(thighRadius, thighHeight, bodyParts[BODYPART_LEFT_THIGH]);
 
 	// right thigh  h=0.316	, ends at 0.706				  
 	bpShape = new btBoxShape(btVector3(thighRadius, thighHeight / 2, thighRadius));
@@ -108,6 +113,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_RIGHT_THIGH] = new GrBulletObject(body);
+	addCylinderLinker(thighRadius, thighHeight, bodyParts[BODYPART_RIGHT_THIGH]);
 
 	// pelvis definition
 	btScalar pelvisLength = (btScalar)0.19, pelvisHeight = (btScalar)0.15, pelvisWidth = (btScalar)0.35;
@@ -124,7 +130,8 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	rbInfo = btRigidBody::btRigidBodyConstructionInfo(bpMass, bpMotionState, bpShape, bpInertia);
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
-	bodyParts[BODYPART_PELVIS] = new GrBulletObject(body);	 
+	bodyParts[BODYPART_PELVIS] = new GrBulletObject(body);
+	addBoxLinker(pelvisLength / 2, pelvisHeight / 2, pelvisWidth / 2, bodyParts[BODYPART_PELVIS]);
 
 	// abdomen definition
 	btScalar abdomenLength = (btScalar)0.13, abdomenHeight = (btScalar)0.113, abdomenWidth = (btScalar)0.268;
@@ -142,6 +149,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_ABDOMEN] = new GrBulletObject(body);
+	addBoxLinker(abdomenLength / 2, abdomenHeight / 2, abdomenWidth / 2, bodyParts[BODYPART_ABDOMEN]);
 
 	// thorax definition
 	btScalar thoraxLength = (btScalar)0.2, thoraxHeight = (btScalar)0.338, thoraxWidth = (btScalar)0.34;
@@ -159,6 +167,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_THORAX] = new GrBulletObject(body);
+	addBoxLinker(thoraxLength / 2, thoraxHeight / 2, thoraxWidth / 2, bodyParts[BODYPART_THORAX]);
 
 	// upper arms definition
 	btScalar upperArmRadius = (btScalar)0.04, upperArmHeight = (btScalar)0.25;
@@ -179,6 +188,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_LEFT_UPPER_ARM] = new GrBulletObject(body);
+	addCylinderLinker(upperArmRadius, upperArmHeight, bodyParts[BODYPART_LEFT_UPPER_ARM]);
 
 	// right upper arm  									 
 	bpShape = new btBoxShape(btVector3(upperArmRadius, upperArmHeight / 2, upperArmRadius));
@@ -191,6 +201,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_RIGHT_UPPER_ARM] = new GrBulletObject(body);
+	addCylinderLinker(upperArmRadius, upperArmHeight, bodyParts[BODYPART_RIGHT_UPPER_ARM]);
 
 	// lower arms definition
 	btScalar lowerArmRadius = (btScalar)0.035, lowerArmHeight = (btScalar)0.28;
@@ -209,6 +220,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_LEFT_LOWER_ARM] = new GrBulletObject(body);
+	addCylinderLinker(lowerArmRadius, lowerArmHeight, bodyParts[BODYPART_LEFT_LOWER_ARM]);
 
 	// right lower arm     
 	bpShape = new btBoxShape(btVector3(lowerArmRadius, lowerArmHeight / 2, lowerArmRadius));
@@ -221,6 +233,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_RIGHT_LOWER_ARM] = new GrBulletObject(body);
+	addCylinderLinker(lowerArmRadius, lowerArmHeight, bodyParts[BODYPART_RIGHT_LOWER_ARM]);
 
 	// neck definition
 	btScalar neckRadius = (btScalar)0.05, neckHeight = (btScalar)0.04;
@@ -238,6 +251,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_NECK] = new GrBulletObject(body);
+	addCylinderLinker(neckRadius, neckHeight, bodyParts[BODYPART_NECK]);
 
 	// head definition
 	btScalar headRadius = (btScalar)0.1, headHeight = (btScalar)0.283;
@@ -255,6 +269,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	body = new btRigidBody(rbInfo);
 	world->addRigidBody(body);
 	bodyParts[BODYPART_HEAD] = new GrBulletObject(body);
+	addSphereLinker(headHeight, bodyParts[BODYPART_HEAD]);
 
 	// create joints
 }

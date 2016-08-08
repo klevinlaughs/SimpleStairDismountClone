@@ -41,7 +41,7 @@ GrBulletObject::~GrBulletObject()
 	delete rigidBody->getCollisionShape();
 	delete rigidBody->getMotionState();
 	delete rigidBody;
-	//delete linker;
+	delete linker;
 }
 
 void GrBulletObject::draw()
@@ -49,8 +49,8 @@ void GrBulletObject::draw()
 	glColor3f(0, 1, 0);
 	glPushMatrix();
 
-	//linker->drawTransform(origin, rotationAxis, rotationAngle);
-
+	linker->drawTransform(origin, rotationAxis, rotationAngle);
+/*
 	glTranslatef((GLfloat)origin.x, (GLfloat)origin.y, (GLfloat)origin.z);
 
 	glRotatef((GLfloat)rotationAngle, (GLfloat)rotationAxis.x, (GLfloat)rotationAxis.y, (GLfloat)rotationAxis.z);
@@ -114,7 +114,7 @@ void GrBulletObject::draw()
 
 
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 
 void GrBulletObject::update()
