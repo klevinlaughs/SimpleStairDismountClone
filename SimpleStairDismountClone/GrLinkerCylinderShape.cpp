@@ -22,13 +22,18 @@ void GrLinkerCylinderShape::draw()
 	glColor4f((GLfloat)r, (GLfloat)g, (GLfloat)b, (GLfloat)a);
 
 	glBegin(GL_QUAD_STRIP);
+
 	int numOfSides = 8;
+	double fraction = 0;
+
+	GLfloat x, y, z;
+
 	for (int i = 0; i <= numOfSides; i++)
 	{
-		double fraction = i / (double)numOfSides;
-		GLfloat x = (GLfloat) cos(fraction * 2 * M_PI) / 2;
-		GLfloat y = 1/2.0;
-		GLfloat z = (GLfloat) sin(fraction * 2 * M_PI) / 2;
+		fraction = i / (double)numOfSides;
+		x = (GLfloat)cos(fraction * 2 * M_PI) / 2;
+		y = (GLfloat)(1 / 2.0);
+		z = (GLfloat)sin(fraction * 2 * M_PI) / 2;
 		glNormal3f(x, y, z);
 		glVertex3f(x, y, z);
 
@@ -36,6 +41,31 @@ void GrLinkerCylinderShape::draw()
 		glVertex3f(x, -y, z);
 	}
 	glEnd();
+
+	glBegin(GL_TRIANGLE_FAN);
+	for (int i = 0; i <= numOfSides; i++)
+	{
+		fraction = i / (double)numOfSides;
+		x = (GLfloat)cos(fraction * 2 * M_PI) / 2;
+		y = (GLfloat)(1 / 2.0);
+		z = (GLfloat)sin(fraction * 2 * M_PI) / 2;
+		glNormal3f(x, y, z);
+		glVertex3f(x, y, z);
+	}
+	glEnd();
+
+	glBegin(GL_TRIANGLE_FAN);
+	for (int i = 0; i <= numOfSides; i++)
+	{
+		fraction = i / (double)numOfSides;
+		x = (GLfloat)cos(fraction * 2 * M_PI) / 2;
+		y = (GLfloat)(1 / 2.0);
+		z = (GLfloat)sin(fraction * 2 * M_PI) / 2;
+		glNormal3f(x, -y, z);
+		glVertex3f(x, -y, z);
+	}
+	glEnd();
+
 }
 
 void GrLinkerCylinderShape::setRGBA(double r, double g, double b, double a)

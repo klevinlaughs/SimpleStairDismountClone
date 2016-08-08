@@ -151,6 +151,7 @@
     <ClCompile Include="GrLinkerBoxShape.cpp" />
     <ClCompile Include="GrLinkerCylinderShape.cpp" />
     <ClCompile Include="GrLinkerObject.cpp" />
+    <ClCompile Include="GrLinkerSphereShape.cpp" />
     <ClCompile Include="GrObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Ragdoll.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="GrLinkerBoxShape.h" />
     <ClInclude Include="GrLinkerCylinderShape.h" />
     <ClInclude Include="GrLinkerObject.h" />
+    <ClInclude Include="GrLinkerSphereShape.h" />
     <ClInclude Include="GrObject.h" />
     <ClInclude Include="Ragdoll.h" />
     <ClInclude Include="State.h" />
