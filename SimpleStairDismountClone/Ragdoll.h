@@ -50,7 +50,7 @@ private:
 	btTypedConstraint *joints[JOINT_COUNT];
 public:
 	Ragdoll();
-	Ragdoll(btDiscreteDynamicsWorld *world, double heightOffset);
+	Ragdoll(btDiscreteDynamicsWorld *world, btScalar heightOffset);
 	~Ragdoll();
 	void draw();
 	void update();

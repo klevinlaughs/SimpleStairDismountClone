@@ -41,7 +41,7 @@ GrBulletObject::~GrBulletObject()
 	delete rigidBody->getCollisionShape();
 	delete rigidBody->getMotionState();
 	delete rigidBody;
-	delete linker;
+	//delete linker;
 }
 
 void GrBulletObject::draw()
@@ -152,7 +152,7 @@ void GrBulletObject::resetPosition()
 	rigidBody->setLinearVelocity(zeroVector);
 	rigidBody->setAngularVelocity(zeroVector);
 
-	btQuaternion rotation(btVector3((btScalar) startRotationAxis.x, (btScalar)startRotationAxis.y, (btScalar)startRotationAxis.z), (btScalar)startRotationAngle * M_PI / (btScalar) 180);
+	btQuaternion rotation(btVector3((btScalar) startRotationAxis.x, (btScalar)startRotationAxis.y, (btScalar)startRotationAxis.z), (btScalar)(startRotationAngle * M_PI / 180));
 	btVector3 translate((btScalar) startOrigin.x, (btScalar) startOrigin.y, (btScalar) startOrigin.z);
 
 	btTransform startTransform;

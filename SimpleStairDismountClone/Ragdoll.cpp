@@ -7,17 +7,17 @@ Ragdoll::Ragdoll()
 {
 }
 
-Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
+Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 {
 	this->world = world;
 
-	double bodyMass = 70.0;
+	btScalar bodyMass = (btScalar)70.0;
 
 	// feet definition
-	double footLength = 0.24, footHeight = 0.05, footWidth = 0.15;
-	double footTop = footHeight + heightOffset;
-	double footXOffset = 0.4, footZOffset = 0.167;
-	double footMass = bodyMass * 1.38/100;
+	btScalar footLength = (btScalar)0.24, footHeight = (btScalar)0.05, footWidth = (btScalar)0.15;
+	btScalar footTop = footHeight + heightOffset;
+	btScalar footXOffset = (btScalar)0.4, footZOffset = (btScalar)0.167;
+	btScalar footMass = bodyMass * (btScalar)1.38/100;
 
 	// left foot
 	btCollisionShape *bpShape = new btBoxShape(btVector3(footLength/2, footHeight/2, footWidth/2));
@@ -25,7 +25,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 	btVector3 bpTranslation(footXOffset, footTop-footHeight/2, -footZOffset);
 	btDefaultMotionState *bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
 	btVector3 bpInertia(0, 0, 0);
-	double bpMass = footMass;
+	btScalar bpMass = footMass;
 	bpShape->calculateLocalInertia(bpMass, bpInertia);
 	btRigidBody::btRigidBodyConstructionInfo rbInfo(bpMass, bpMotionState, bpShape, bpInertia);
 	btRigidBody *body = new btRigidBody(rbInfo);
@@ -46,9 +46,9 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 	bodyParts[BODYPART_RIGHT_FOOT] = new GrBulletObject(body);
 
 	// legs definition
-	double legRadius = 0.055, legHeight = 0.34;
-	double legTop = footTop + legHeight;
-	double legMass = bodyMass * 5.05/100;
+	btScalar legRadius = (btScalar)0.055, legHeight = (btScalar) 0.34;
+	btScalar legTop = footTop + legHeight;
+	btScalar legMass = bodyMass * (btScalar)5.05/100;
 
 	// left leg
 	bpShape = new btBoxShape(btVector3(legRadius, legHeight/2, legRadius));
@@ -75,16 +75,16 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 	bodyParts[BODYPART_RIGHT_LEG] = new GrBulletObject(body);
 
 	// thighs definition
-	double thighRadius = 0.07, thighHeight = 0.32;
-	double thighAngle = 12 * M_PI / 180;
-	double thighAngledHeight = thighHeight * cos(thighAngle);
-	double thighTop = legTop + thighAngledHeight;
-	double thighZOffset = 0.1136;
-	double thighMass = bodyMass * 11.125/100;
+	btScalar thighRadius = (btScalar)0.07, thighHeight = (btScalar)0.32;
+	btScalar thighAngle = (btScalar) (12 * M_PI / 180);
+	btScalar thighAngledHeight = thighHeight * btCos(thighAngle);
+	btScalar thighTop = legTop + thighAngledHeight;
+	btScalar thighZOffset = (btScalar)0.1136;
+	btScalar thighMass = bodyMass * (btScalar)11.125/100;
 
 	// left thigh  h=0.316
 	bpShape = new btBoxShape(btVector3(thighRadius, thighHeight/2, thighRadius));
-	bpRotation = btQuaternion(1 * sin(thighAngle/2), 0, 0, cos(thighAngle/2));
+	bpRotation = btQuaternion(1 * btSin(thighAngle / 2), 0, 0, btCos(thighAngle / 2));
 	bpTranslation = btVector3(0, thighTop - thighAngledHeight/2, -thighZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
 	bpInertia = btVector3(0, 0, 0);
@@ -96,7 +96,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 
 	// right thigh  h=0.316	, ends at 0.706				  
 	bpShape = new btBoxShape(btVector3(thighRadius, thighHeight / 2, thighRadius));
-	bpRotation = btQuaternion(-1 * sin(thighAngle / 2), 0, 0, cos(thighAngle / 2));
+	bpRotation = btQuaternion(-1 * btSin(thighAngle / 2), 0, 0, btCos(thighAngle / 2));
 	bpTranslation = btVector3(0, thighTop - thighAngledHeight / 2, thighZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
 	bpInertia = btVector3(0, 0, 0);
@@ -107,9 +107,9 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 	bodyParts[BODYPART_RIGHT_THIGH] = new GrBulletObject(body);
 
 	// pelvis definition
-	double pelvisLength = 0.19, pelvisHeight = 0.15, pelvisWidth = 0.35;
-	double pelvisTop = thighTop + pelvisHeight;
-	double pelvisMass = bodyMass * 14.81/100;
+	btScalar pelvisLength = (btScalar)0.19, pelvisHeight = (btScalar)0.15, pelvisWidth = (btScalar)0.35;
+	btScalar pelvisTop = thighTop + pelvisHeight;
+	btScalar pelvisMass = bodyMass * (btScalar)14.81/100;
 
 	// pelvis 
 	bpShape = new btBoxShape(btVector3(pelvisLength/2, pelvisHeight/2, pelvisWidth/2));
@@ -124,9 +124,9 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 	bodyParts[BODYPART_PELVIS] = new GrBulletObject(body);	 
 
 	// abdomen definition
-	double abdomenLength = 0.13, abdomenHeight = 0.113, abdomenWidth = 0.268;
-	double abdomenTop = pelvisTop + abdomenHeight;
-	double abdomenMass = bodyMass *  12.65 / 100;
+	btScalar abdomenLength = (btScalar)0.13, abdomenHeight = (btScalar)0.113, abdomenWidth = (btScalar)0.268;
+	btScalar abdomenTop = pelvisTop + abdomenHeight;
+	btScalar abdomenMass = bodyMass * (btScalar)12.65 / 100;
 
 	// abdomen
 	bpShape = new btBoxShape(btVector3(abdomenLength/2, abdomenHeight/2, abdomenWidth/2));
@@ -141,9 +141,9 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 	bodyParts[BODYPART_ABDOMEN] = new GrBulletObject(body);
 
 	// thorax definition
-	double thoraxLength = 0.2, thoraxHeight = 0.338, thoraxWidth = 0.34;
-	double thoraxTop = abdomenTop + thoraxHeight;
-	double thoraxMass = bodyMass * 18.56/100;
+	btScalar thoraxLength = (btScalar)0.2, thoraxHeight = (btScalar)0.338, thoraxWidth = (btScalar)0.34;
+	btScalar thoraxTop = abdomenTop + thoraxHeight;
+	btScalar thoraxMass = bodyMass * (btScalar)18.56/100;
 
 	// thorax 
 	bpShape = new btBoxShape(btVector3(thoraxLength/2, thoraxHeight/2, thoraxWidth/2));
@@ -158,16 +158,16 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 	bodyParts[BODYPART_THORAX] = new GrBulletObject(body);
 
 	// upper arms definition
-	double upperArmRadius = 0.04, upperArmHeight = 0.25;
-	double upperArmAngle = 25 * M_PI / 180;
-	double upperArmAngledHeight = upperArmHeight * cos(upperArmAngle);
-	double upperArmBottom = thoraxTop - upperArmAngledHeight;
-	double upperArmZOffset = 0.223;
-	double upperArmMass = bodyMass * 3.075 / 100;
+	btScalar upperArmRadius = (btScalar)0.04, upperArmHeight = (btScalar)0.25;
+	btScalar upperArmAngle = (btScalar)(25 * M_PI / 180);
+	btScalar upperArmAngledHeight = upperArmHeight * btCos(upperArmAngle);
+	btScalar upperArmBottom = thoraxTop - upperArmAngledHeight;
+	btScalar upperArmZOffset = (btScalar)0.223;
+	btScalar upperArmMass = bodyMass * (btScalar)3.075 / 100;
 
 	// left upper arm  
 	bpShape = new btBoxShape(btVector3(upperArmRadius, upperArmHeight/2, upperArmRadius));
-	bpRotation = btQuaternion(1 * sin(upperArmAngle/2), 0, 0, cos(upperArmAngle/2));
+	bpRotation = btQuaternion(1 * btSin(upperArmAngle/2), 0, 0, btCos(upperArmAngle/2));
 	bpTranslation = btVector3(0, upperArmBottom + upperArmAngledHeight/2, -upperArmZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
 	bpInertia = btVector3(0, 0, 0);
@@ -179,7 +179,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 
 	// right upper arm  									 
 	bpShape = new btBoxShape(btVector3(upperArmRadius, upperArmHeight / 2, upperArmRadius));
-	bpRotation = btQuaternion(-1 * sin(upperArmAngle / 2), 0, 0, cos(upperArmAngle / 2));
+	bpRotation = btQuaternion(-1 * btSin(upperArmAngle / 2), 0, 0, btCos(upperArmAngle / 2));
 	bpTranslation = btVector3(0, upperArmBottom + upperArmAngledHeight / 2, upperArmZOffset);
 	bpMotionState = new btDefaultMotionState(btTransform(bpRotation, bpTranslation));
 	bpInertia = btVector3(0, 0, 0);
@@ -190,10 +190,10 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 	bodyParts[BODYPART_RIGHT_UPPER_ARM] = new GrBulletObject(body);
 
 	// lower arms definition
-	double lowerArmRadius = 0.035, lowerArmHeight = 0.28;
-	double lowerArmTop = upperArmBottom;
-	double lowerArmZOffset = 0.276;
-	double lowerArmMass = bodyMass * 1.72 / 100;
+	btScalar lowerArmRadius = (btScalar)0.035, lowerArmHeight = (btScalar)0.28;
+	btScalar lowerArmTop = upperArmBottom;
+	btScalar lowerArmZOffset = (btScalar)0.276;
+	btScalar lowerArmMass = bodyMass * (btScalar)1.72 / 100;
 
 	// left lower arm  
 	bpShape = new btBoxShape(btVector3(lowerArmRadius, lowerArmHeight/2, lowerArmRadius));
@@ -220,9 +220,9 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 	bodyParts[BODYPART_RIGHT_LOWER_ARM] = new GrBulletObject(body);
 
 	// neck definition
-	double neckRadius = 0.05, neckHeight = 0.04;
-	double neckTop = thoraxTop + neckHeight;
-	double neckMass = 0.5;
+	btScalar neckRadius = (btScalar)0.05, neckHeight = (btScalar)0.04;
+	btScalar neckTop = thoraxTop + neckHeight;
+	btScalar neckMass = (btScalar)0.5;
 	
 	// neck	  
 	bpShape = new btBoxShape(btVector3(neckRadius, neckHeight/2, neckRadius));
@@ -237,9 +237,9 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, double heightOffset)
 	bodyParts[BODYPART_NECK] = new GrBulletObject(body);
 
 	// head definition
-	double headRadius = 0.1, headHeight = 0.283;
-	double headTop = neckTop + headHeight;
-	double headMass = 5.0;
+	btScalar headRadius = (btScalar)0.1, headHeight = (btScalar)0.283;
+	btScalar headTop = neckTop + headHeight;
+	btScalar headMass = (btScalar)5.0;
 
 	// head	 
 	bpShape = new btBoxShape(btVector3(headRadius, headHeight/2, headRadius));
