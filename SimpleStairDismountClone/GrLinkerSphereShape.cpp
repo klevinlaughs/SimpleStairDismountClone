@@ -23,15 +23,16 @@ void GrLinkerSphereShape::draw()
 	int numOfSegments = 8;
 	double fractionI = 0;
 	double fractionI2 = 0;
-	double fractionJ = 0;
+	double fractionJ = 0; 
+	double fractionOut = 0;
 
 	GLfloat x, y, z;
 
 	// up and down
 	for (int i = 0; i <= numOfSegments/2; i++)
 	{
-		fractionI = i / (double)(numOfSegments/2);
-		fractionI2 = (i + 1) / (double)(numOfSegments / 2);
+		fractionI = i / (double)((numOfSegments/2) + 1);
+		fractionI2 = (i + 1) / (double)((numOfSegments / 2) + 1);
 
 		// top
 		if (i == 0)
@@ -46,10 +47,12 @@ void GrLinkerSphereShape::draw()
 
 			for (int j = 0; j <= numOfSegments; j++)
 			{
+				
 				fractionJ = j / (double)numOfSegments;
-				x = (GLfloat)cos(fractionJ * 2 * M_PI) / 2;
+				fractionOut = sin(fractionI2 * M_PI);
+				x = (GLfloat)(cos(fractionJ * 2 * M_PI) / 2) * fractionOut;
 				y = (GLfloat)cos(fractionI2 * M_PI) / 2;
-				z = (GLfloat)sin(fractionJ * 2 * M_PI) / 2;
+				z = (GLfloat)(sin(fractionJ * 2 * M_PI) / 2) * fractionOut;
 
 				glNormal3f(x, y, z);
 				glVertex3f(x, y, z);
@@ -71,9 +74,10 @@ void GrLinkerSphereShape::draw()
 			for (int j = 0; j <= numOfSegments; j++)
 			{
 				fractionJ = j / (double)numOfSegments;
-				x = (GLfloat)cos(fractionJ * 2 * M_PI) / 2;
+				fractionOut = sin(fractionI * M_PI);
+				x = (GLfloat)(cos(fractionJ * 2 * M_PI) / 2) * fractionOut;
 				y = (GLfloat)cos(fractionI * M_PI) / 2;
-				z = (GLfloat)sin(fractionJ * 2 * M_PI) / 2;
+				z = (GLfloat)(sin(fractionJ * 2 * M_PI) / 2) * fractionOut;
 
 				glNormal3f(x, y, z);
 				glVertex3f(x, y, z);
@@ -89,16 +93,18 @@ void GrLinkerSphereShape::draw()
 			for (int j = 0; j <= numOfSegments; j++)
 			{
 				fractionJ = j / (double)numOfSegments;
-				x = (GLfloat)cos(fractionJ * 2 * M_PI) / 2;
+				fractionOut = sin(fractionI * M_PI);
+				x = (GLfloat)(cos(fractionJ * 2 * M_PI) / 2) * fractionOut;
 				y = (GLfloat)cos(fractionI * M_PI) / 2;
-				z = (GLfloat)sin(fractionJ * 2 * M_PI) / 2;
+				z = (GLfloat)(sin(fractionJ * 2 * M_PI) / 2) * fractionOut;
 
 				glNormal3f(x, y, z);
 				glVertex3f(x, y, z);
 
-				x = (GLfloat)cos(fractionJ * 2 * M_PI) / 2;
+				fractionOut = sin(fractionI2 * M_PI);
+				x = (GLfloat)(cos(fractionJ * 2 * M_PI) / 2) * fractionOut;
 				y = (GLfloat)cos(fractionI2 * M_PI) / 2;
-				z = (GLfloat)sin(fractionJ * 2 * M_PI) / 2;
+				z = (GLfloat)(sin(fractionJ * 2 * M_PI) / 2) * fractionOut;
 
 				glNormal3f(x, y, z);
 				glVertex3f(x, y, z);
