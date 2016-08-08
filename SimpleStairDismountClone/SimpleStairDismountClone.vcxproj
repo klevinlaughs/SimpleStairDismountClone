@@ -148,6 +148,9 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="GrBulletObject.cpp" />
+    <ClCompile Include="GrLinkerBoxShape.cpp" />
+    <ClCompile Include="GrLinkerCylinderShape.cpp" />
+    <ClCompile Include="GrLinkerObject.cpp" />
     <ClCompile Include="GrObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Ragdoll.cpp" />
@@ -161,6 +164,9 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="GrBulletObject.h" />
+    <ClInclude Include="GrLinkerBoxShape.h" />
+    <ClInclude Include="GrLinkerCylinderShape.h" />
+    <ClInclude Include="GrLinkerObject.h" />
     <ClInclude Include="GrObject.h" />
     <ClInclude Include="Ragdoll.h" />
     <ClInclude Include="State.h" />

@@ -149,8 +149,8 @@ void GrBulletObject::resetPosition()
 	rigidBody->setLinearVelocity(zeroVector);
 	rigidBody->setAngularVelocity(zeroVector);
 
-	btQuaternion rotation(btVector3(startRotationAxis.x, startRotationAxis.y, startRotationAxis.z), startRotationAngle * M_PI / 180);
-	btVector3 translate(startOrigin.x, startOrigin.y, startOrigin.z);
+	btQuaternion rotation(btVector3((btScalar) startRotationAxis.x, (btScalar)startRotationAxis.y, (btScalar)startRotationAxis.z), (btScalar)startRotationAngle * M_PI / (btScalar) 180);
+	btVector3 translate((btScalar) startOrigin.x, (btScalar) startOrigin.y, (btScalar) startOrigin.z);
 
 	btTransform startTransform;
 	startTransform.setIdentity();

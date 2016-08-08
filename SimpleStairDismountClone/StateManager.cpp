@@ -43,7 +43,7 @@ void StateManager::initWorld()
 	solver = new btSequentialImpulseConstraintSolver();
 
 	world = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
-	world->setGravity(btVector3(0, -9.81, 0));
+	world->setGravity(btVector3(0, (btScalar) -9.81, 0));
 
 	{
 		btCollisionShape *ground = new btStaticPlaneShape(btVector3(0, 1, 0), 0);

@@ -9,7 +9,7 @@ class GrLinkerObject :
 public:
 	GrLinkerObject();
 	~GrLinkerObject();
-	virtual void draw(btQuaternion rotation, btVector3 translation);
+	virtual void drawTransform(btQuaternion &rotation, btVector3 &translation);
 	virtual void draw();
 
 };

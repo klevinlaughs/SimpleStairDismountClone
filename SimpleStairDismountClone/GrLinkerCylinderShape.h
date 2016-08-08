@@ -1,15 +1,14 @@
 #pragma once
 #include "GrLinkerObject.h"
-
-class GrLinkerBoxShape :
+class GrLinkerCylinderShape :
 	public GrLinkerObject
 {
 private:
 	double r = 0.5, g = 0.4, b = 0.3, a = 0;
-	double xSize = 0, ySize = 0, zSize = 0;
+	double radius = 0, height = 0;
 public:
-	GrLinkerBoxShape(double halfX, double halfY, double halfZ);
-	~GrLinkerBoxShape();
+	GrLinkerCylinderShape(double radius, double height);
+	~GrLinkerCylinderShape();	
 	void draw();
 	void setRGBA(double r, double g, double b, double a);
 };

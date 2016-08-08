@@ -16,7 +16,7 @@ void StateDismount::init()
 {
 	clock.reset();
 	  // TODO : set RNG launch
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	int ran15 = rand() % 15;
 	// choose body part, set launch
 }
@@ -50,7 +50,7 @@ void StateDismount::draw()
 void StateDismount::update()
 {
 	btScalar timeDiff = clock.getTimeSeconds();
-	double speed = 1 / 5000.f;
+	btScalar speed = 1 / 5000.f;
 	world->stepSimulation(timeDiff * speed);
 	ragdoll->update();
 }
