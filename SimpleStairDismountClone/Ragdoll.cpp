@@ -3,6 +3,8 @@
 #include "GrLinkerCylinderShape.h"
 #include "GrLinkerSphereShape.h"
 
+#include <time.h>
+
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -17,7 +19,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	btScalar bodyMass = (btScalar)70.0;
 
 	// feet definition
-	btScalar footLength = (btScalar)0.24, footHeight = (btScalar)0.05, footWidth = (btScalar)0.15;
+	btScalar footLength = (btScalar)0.24, footHeight = (btScalar)0.08, footWidth = (btScalar)0.15;
 	btScalar footTop = footHeight + heightOffset;
 	btScalar footXOffset = (btScalar)0.04, footZOffset = (btScalar)0.167;
 	btScalar footMass = bodyMass * (btScalar)1.38/100;
@@ -280,14 +282,14 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	btTransform bodyA, bodyB;
 	bodyA.setIdentity();
 	bodyA.getBasis().setEulerZYX(0, 0, M_PI_2);
-	bodyA.setOrigin(btVector3(0, -headHeight/2 - 0.02, 0));
+	bodyA.setOrigin(btVector3(0, -(headHeight/2 + 0.02), 0));
 	bodyB.setIdentity();
 	bodyB.getBasis().setEulerZYX(0, 0, M_PI_2);
 	bodyB.setOrigin(btVector3(0, neckHeight/2 + 0.01, 0));
 	coneConstraint = new btConeTwistConstraint(*bodyParts[BODYPART_HEAD]->getRigidBody(), *bodyParts[BODYPART_NECK]->getRigidBody(), bodyA, bodyB);
 	coneConstraint->setLimit(M_PI_4, M_PI_4, M_PI_2);
 	joints[JOINT_HEAD_NECK] = coneConstraint;
-	world->addConstraint(joints[JOINT_HEAD_NECK], true);
+	world->addConstraint(joints[JOINT_HEAD_NECK], false);
 
 	// neck-thorax
 	bodyA.setIdentity();
@@ -376,7 +378,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	// pelvis-leftthigh	   	 																		  
 	bodyA.setIdentity();
 	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
-	bodyA.setOrigin(btVector3(0, -(pelvisHeight / 2 + thighRadius), -(pelvisWidth/2 - thighRadius)));
+	bodyA.setOrigin(btVector3(0, -(pelvisHeight / 2), -(pelvisWidth/2 - thighRadius)));
 	bodyB.setIdentity();
 	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
 	bodyB.setOrigin(btVector3(0, thighHeight/2 + thighRadius, 0));
@@ -413,7 +415,7 @@ Ragdoll::Ragdoll(btDiscreteDynamicsWorld * world, btScalar heightOffset)
 	// pelvis-rightthigh	   	 																		  
 	bodyA.setIdentity();
 	bodyA.getBasis().setEulerZYX(0, M_PI_2, 0);
-	bodyA.setOrigin(btVector3(0, -(pelvisHeight / 2 + thighRadius), (pelvisWidth / 2 - thighRadius)));
+	bodyA.setOrigin(btVector3(0, -(pelvisHeight / 2), (pelvisWidth / 2 - thighRadius)));
 	bodyB.setIdentity();
 	bodyB.getBasis().setEulerZYX(0, M_PI_2, 0);
 	bodyB.setOrigin(btVector3(0, thighHeight / 2 + thighRadius, 0));
@@ -490,6 +492,25 @@ void Ragdoll::resetPosition()
 		bodyParts[i]->resetPosition();
 		bodyParts[i]->activate();
 	}
+}
+
+void Ragdoll::RNJesus()
+{
+	// TODO : set RNG launch
+	srand((unsigned int)time(NULL));
+	int random = rand() % BODYPART_COUNT;
+	// choose body part, set launch	 
+	btScalar vx = rand() % 800 - 400;
+	btScalar vy = rand() % 800 - 400;
+	btScalar vz = rand() % 800 - 400;
+	bodyParts[random]->getRigidBody()->applyCentralImpulse(btVector3(vx, vy, vz));
+
+	//bodyParts[BODYPART_HEAD]->getRigidBody()->setLinearVelocity(btVector3(-15, 0, 0));
+	//bodyParts[BODYPART_RIGHT_LOWER_ARM]->getRigidBody()->setAngularVelocity(btVector3(0, 1, 0));
+
+	//bodyParts[BODYPART_HEAD]->getRigidBody()->activate(true);
+	//bodyParts[BODYPART_HEAD]->getRigidBody()->applyCentralForce(btVector3(-15000, 0, 0));
+	//bodyParts[BODYPART_HEAD]->getRigidBody()->applyCentralImpulse(btVector3(-1500, 0, 0));
 }
 
 

@@ -50,71 +50,7 @@ void GrBulletObject::draw()
 	glPushMatrix();
 
 	linker->drawTransform(origin, rotationAxis, rotationAngle);
-/*
-	glTranslatef((GLfloat)origin.x, (GLfloat)origin.y, (GLfloat)origin.z);
-
-	glRotatef((GLfloat)rotationAngle, (GLfloat)rotationAxis.x, (GLfloat)rotationAxis.y, (GLfloat)rotationAxis.z);
-
-
-	glBegin(GL_QUAD_STRIP);
-	glNormal3f(-0.5, 0.5, 0.5);
-	glVertex3f(-0.5, 0.5, 0.5);
-
-	glNormal3f(-0.5, -0.5, 0.5);
-	glVertex3f(-0.5, -0.5, 0.5);
-
-	glNormal3f(0.5, 0.5, 0.5);
-	glVertex3f(0.5, 0.5, 0.5);
-
-	glNormal3f(0.5, -0.5, 0.5);
-	glVertex3f(0.5, -0.5, 0.5);
-
-	glNormal3f(0.5, 0.5, -0.5);
-	glVertex3f(0.5, 0.5, -0.5);
-
-	glNormal3f(0.5, -0.5, -0.5);
-	glVertex3f(0.5, -0.5, -0.5);
-
-	glNormal3f(-0.5, 0.5, -0.5);
-	glVertex3f(-0.5, 0.5, -0.5);
-
-	glNormal3f(-0.5, -0.5, -0.5);
-	glVertex3f(-0.5, -0.5, -0.5);
-
-	glNormal3f(-0.5, 0.5, 0.5);
-	glVertex3f(-0.5, 0.5, 0.5);
-
-	glEnd();
-	
-	glBegin(GL_QUADS);
-	glNormal3f(0.5, 0.5, 0.5);
-	glVertex3f(0.5, 0.5, 0.5);
-
-	glNormal3f(0.5, 0.5, -0.5);
-	glVertex3f(0.5, 0.5, -0.5);
-
-	glNormal3f(-0.5, 0.5, -0.5);
-	glVertex3f(-0.5, 0.5, -0.5);
-
-	glNormal3f(-0.5, 0.5, 0.5);
-	glVertex3f(-0.5, 0.5, 0.5);
-
-
-	glNormal3f(0.5, -0.5, 0.5);
-	glVertex3f(0.5, -0.5, 0.5);
-
-	glNormal3f(-0.5, -0.5, 0.5);
-	glVertex3f(-0.5, -0.5, 0.5);
-
-	glNormal3f(-0.5, -0.5, -0.5);
-	glVertex3f(-0.5, -0.5, -0.5);
-
-	glNormal3f(0.5, -0.5, -0.5);
-	glVertex3f(0.5, -0.5, -0.5);
-
-
-	glEnd();
-	glPopMatrix();*/
+	glPopMatrix();
 }
 
 void GrBulletObject::update()
@@ -140,7 +76,6 @@ void GrBulletObject::updateRotation()
 	rotationAxis.y = transform.getRotation().getAxis().getY();
 	rotationAxis.z = transform.getRotation().getAxis().getZ();
 	rotationAngle = transform.getRotation().getAngle() * 180 / M_PI;
-	//std::cout << rotationAxis.x << ", " << rotationAxis.y << ", " << rotationAxis.z << ": angle - " << rotationAngle << std::endl;
 }
 
 void GrBulletObject::resetPosition()

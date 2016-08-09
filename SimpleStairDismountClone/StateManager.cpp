@@ -47,9 +47,9 @@ void StateManager::initWorld()
 	world->setGravity(btVector3(0, (btScalar) -9.81, 0));
 
 	{
-		btCollisionShape *ground = new btStaticPlaneShape(btVector3(0, 1, 0), 0);
+		btCollisionShape *ground = new btStaticPlaneShape(btVector3(0, 1, 0), 1);
 
-		btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1)));
+		btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0,0,0)));
 
 		btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0, groundMotionState, ground, btVector3(0, 0, 0));
 

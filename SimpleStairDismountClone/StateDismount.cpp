@@ -15,10 +15,7 @@ StateDismount::~StateDismount()
 void StateDismount::init()
 {
 	clock.reset();
-	  // TODO : set RNG launch
-	srand((unsigned int)time(NULL));
-	int ran15 = rand() % 15;
-	// choose body part, set launch
+	ragdoll->RNJesus();
 }
 
 void StateDismount::enter()

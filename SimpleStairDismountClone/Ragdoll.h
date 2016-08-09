@@ -59,5 +59,6 @@ public:
 	void draw();
 	void update();
 	void resetPosition();
+	void RNJesus();
 };
 
